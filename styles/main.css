@@ -2008,7 +2008,11 @@ body {
     .brand {
       background: #000;
     }
-    .main-title {
+    
+      .brand {
+        font-weight: bold;
+        transform: scale([1,4]);
+      }.main-title {
       color: #FFF;
     }
     .mist .site-title i {

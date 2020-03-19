@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-03-17T02:02:06.324Z</updated>
+    <updated>2020-03-19T14:03:04.755Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,43 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[题解 [POI2014]FAR-FarmCraft]]></title>
+        <id>https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/</id>
+        <link href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">
+        </link>
+        <updated>2020-03-19T14:00:12.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="一发巧妙的贪心">一发巧妙的贪心</h2>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="一发巧妙的贪心">一发巧妙的贪心</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ 数论函数 学习笔记]]></title>
+        <id>https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-ji/</id>
+        <link href="https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-ji/">
+        </link>
+        <updated>2020-03-19T13:56:33.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="数论函数">数论函数</h1>
+<p>数论中常用的函数&amp;莫比乌斯反演</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="数论函数">数论函数</h1>
+<p>数论中常用的函数&amp;莫比乌斯反演</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[扩展中国剩余定理 学习笔记]]></title>
+        <id>https://alan-sp.github.io/post/kuo-zhan-zhong-guo-sheng-yu-ding-li-xue-xi-bi-ji/</id>
+        <link href="https://alan-sp.github.io/post/kuo-zhan-zhong-guo-sheng-yu-ding-li-xue-xi-bi-ji/">
+        </link>
+        <updated>2020-03-19T13:55:34.000Z</updated>
+        <summary type="html"><![CDATA[<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>X</mi><mi>C</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">EXCRT</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>:</p>
+<p>求同余方程余数无限制的通解。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>X</mi><mi>C</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">EXCRT</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>:</p>
+<p>求同余方程余数无限制的通解。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[平衡树全家桶]]></title>
         <id>https://alan-sp.github.io/post/da-wu/</id>

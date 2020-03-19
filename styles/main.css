@@ -1903,7 +1903,13 @@ body {
         width: 1200px;
         margin: 0 auto;
       }
-    body {
+    @font-face {
+      font-family: 'STXINGKA.TTF';
+      src: url('/media/fonts/STXINGKA.TTF.ttf');
+    }
+    * {
+        font-family: 'STXINGKA.TTF';
+    }body {
       color: #555;
     }
     .next-md-body {

@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>平衡树全家桶 | AlanSP&#39;s  Blog</title>
+<title>题解 [POI2014]FAR-FarmCraft | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1584626572072">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="平衡树全家桶" />
-    <meta name="keywords" content="数据结构" />
+    <meta name="description" content="题解 [POI2014]FAR-FarmCraft" />
+    <meta name="keywords" content="题解" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -203,16 +203,7 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1splay%E4%BC%B8%E5%B1%95%E6%A0%91">1.Splay（伸展树）</a></li>
-<li><a href="#2treap%E4%BC%A0%E7%BB%9F%E6%A0%91%E5%A0%86">2.Treap（传统树堆）</a><br>
-*
-<ul>
-<li><a href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E7%9C%9F%E7%9A%84%E5%9B%A0%E4%B8%BA%E9%9A%8F%E6%9C%BA%E7%A7%8D%E5%AD%90%E8%A2%AB%E5%8D%A1%E4%BA%86%E8%80%8C%E4%B8%8D%E6%98%AF%E4%BD%A0%E5%86%99%E6%8C%82%E4%BA%86%E9%82%A3%E4%B9%88%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%8E%BB%E4%B9%B0%E5%BD%A9%E7%A5%A8%E4%BA%86">如果你真的因为随机种子被卡了，而不是你写挂了，那么你可以去买彩票了。</a></li>
-</ul>
-</li>
-<li><a href="#3fhq-treap%E9%9D%9E%E6%97%8B%E6%A0%91%E5%A0%86">3.fhq-Treap（非旋树堆）</a></li>
-<li><a href="#4scapegoat-tree%E6%9B%BF%E7%BD%AA%E7%BE%8A%E6%A0%91">4.Scapegoat Tree（替罪羊树）</a></li>
-<li><a href="#5wblt">5.WBLT</a></li>
+<li><a href="#%E4%B8%80%E5%8F%91%E5%B7%A7%E5%A6%99%E7%9A%84%E8%B4%AA%E5%BF%83">一发巧妙的贪心</a></li>
 </ul>
 </li>
 </ul>
@@ -476,8 +467,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/da-wu/">
-      平衡树全家桶
+    <a class="post-title-link" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">
+      题解 [POI2014]FAR-FarmCraft
     </a>
   </h1>
   <div class="post-meta">
@@ -485,7 +476,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-17</span>
+      <span>2020-03-19</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -494,8 +485,8 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/5KwHqZ80p/">
-              <span>数据结构</span>
+            <a href="https://alan-sp.github.io/tag/BqmQeZXwL/">
+              <span>题解</span>
             </a>
           
         
@@ -504,19 +495,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>10分钟</span>
+      <span>4分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1855<span class="pc-show">字数</span></span>
+      <span>640<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/da-wu/" data-flag-title="平衡树全家桶" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/ti-jie-poi2014far-farmcraft/" data-flag-title="题解 [POI2014]FAR-FarmCraft" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -525,408 +516,73 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>讲几棵平衡树</p>
-<p>前置知识：BST。</p>
+                <h2 id="一发巧妙的贪心">一发巧妙的贪心</h2>
 <!-- more -->
-<p>...</p>
-<h2 id="1splay伸展树">1.Splay（伸展树）</h2>
-<p>Splay算是平衡树中比较重要的一种了，虽然不能可持久化，但仍有着举足轻重的地位。（<s>文科生</s>）</p>
-<p>众所周知，Splay通过旋转，伸展来维持平衡。也是这个地方最难理解。（我就是这样）</p>
-<p>先贴几张图</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/image_hosting/hkel14gd.png" alt="" loading="lazy"></figure>
-<p>(画的巨丑的平衡树）</p>
-<p>根据图我们知道tr[x].fa=y,tr[y]=z;<br>
-tr[x].ch[0]=A,tr[x].ch[1]=B</p>
-<p>根据BST的性质，我们可以得到 A&lt;x&lt;B,x&lt;y&lt;c,y&lt;z；</p>
-<p>我们旋转，是要维护平衡树的树形结构，防止退化。所以我们应该把x旋转上去。</p>
-<p>因为x&lt;z，所以x是z的左孩子。</p>
-<p>根据BST插入的性质，有x&lt;B&lt;y。</p>
-<p>所以B被当作y的左儿子，C和A的相对位置不变。</p>
-<p>把结论推广：x变为y原来的那个儿子，y变为x原来的相反儿子，其余儿子不变。</p>
-<p>这样就旋转完成了！！！QWQ撒花<em>★,°</em>:.☆(￣▽￣)$:<em>.°★</em></p>
-<p>你以为这就是splay吗，不，这只是splay的基操：rotate。</p>
-<p>至于splay，还要更复杂一<s>亿</s>点点。</p>
-<p>Tarjan曾说：Splay要靠双旋来维持平衡。</p>
-<p>因为如果单旋的话，如上图，还是很容易被卡成链。(再两次rotate后z和y在一条链上）</p>
-<p>这时候就要分情况讨论：</p>
-<p>如果x，y，z，在一条链上，就要先旋y，再旋x；</p>
-<p>这样就没有特别明显的链了（自行画图理解）</p>
-<p>else，就旋两次x就行了。</p>
-<p>另外注意细节：如果z点不存在（y就是根），要特判。</p>
-<p>因为此时旋一次x就行了</p>
-<p>（感谢<a href="https://www.cnblogs.com/cjyyb/p/7499020.html">yyb巨佬</a>）</p>
-<p>看代码吧（我懒得画图了）</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+<p><s>在luogu网校学完这题，就来水题解</s>。</p>
+<p>容易看出，原图是一棵树。</p>
+<p>所以我们考虑树形DP。</p>
+<p>暴力DP肯定TLE，我们考虑用贪心优化。</p>
+<p>我们记<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">g(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span>为遍历i的子树的最短时间。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span>为遍历i的子树，且每人装好电脑的最短时间。</p>
+<p>显然有，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>&gt;</mo><mi>g</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)&gt;g(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span>。</p>
+<p>我们发现<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>−</mo><mi>g</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(i)-g(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span>这段时间是用来等待的。</p>
+<p>如果你做过<a href="https://www.luogu.com.cn/problem/P1223">排队接水</a>这道题，那么你不难想到要从大到小排序。</p>
+<p>这样我们每次转移时可以先将儿子排序，然后直接转移。</p>
+<p>但请注意细节，转移时：</p>
+<pre><code class="language-cpp">for(int i=1;i&lt;=cnt;i++) f[u]=max(f[u],f[son[i]]+g[u]+1);
+</code></pre>
+<p>而不是</p>
+<pre><code class="language-cpp">for(int i=1;i&lt;=cnt;i++) f[u]=max(f[u],f[son[i]]+g[u]+2)
+</code></pre>
+<p>为什么呢？</p>
+<p><s>网校没讲，我想了好久QAQ</s>。</p>
+<p>其实很简单。</p>
+<p>我们知道每个点的等待值肯定大于等于1（无特殊情况）。</p>
+<p>所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>−</mo><mi>g</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>&gt;</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f[i]-g[i]&gt;=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
+<p>我们只需考虑进入i时的一条道路。</p>
+<p>而走出i时的时间已经被覆盖在等待时间里啦！</p>
+<p>所以我们就可以轻松写出代码了qwq。</p>
+<p>(至于具体的DP过程，可以写写<a href="https://www.luogu.com.cn/problem/P6082">这道题</a>)。</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
 using namespace std;
-
-const int N=1e6+9;
-const int INF=1&lt;&lt;30;
-
-struct Splay{
-	int ch[2];
-	int cnt,val,fa,siz;
-} a[N];
-
-inline void out()
+const int N=500009;
+int f[N],g[N],son[N];
+int n,cnt,tot;
+int ver[N],nxt[N],h[N],a[N];
+inline void add(int x,int y)
 {
-	cout&lt;&lt;&quot;edwqedwq&quot;&lt;&lt;endl;
+	ver[++tot]=y,nxt[tot]=h[x],h[x]=tot;
 }
-
-int root,tot,n;
-
-inline void update(int x)
+bool cmp(int x,int y)
 {
-	a[x].siz=a[a[x].ch[0]].siz+a[a[x].ch[1]].siz+a[x].cnt;
+	return f[x]-g[x]&gt;f[y]-g[y];
 }
-
-inline void clear(int x)
+inline void dfs(int u,int fa)
 {
-	a[x].fa=a[x].cnt=a[x].siz=a[x].val=a[x].ch[0]=a[x].ch[1]=0;
-}
-
-inline int ide(int p)
-{
-	return a[a[p].fa].ch[1]==p;
-}
-
-inline void connect(int p,int fa,int son)
-{
-	a[p].fa=fa,a[fa].ch[son]=p;
-}
-
-inline void rotate(int p)
-{
-	int fa=a[p].fa,gfa=a[fa].fa,fson=ide(fa),son=ide(p);
-	connect(p,gfa,fson);
-	connect(a[p].ch[son^1],fa,son);
-	connect(fa,p,son^1);
-	update(fa),update(p);
-}
-
-inline void splay(int p)
-{
-	for(int fa;(fa=a[p].fa);rotate(p))
-	{
-		if(a[fa].fa) rotate((ide(fa)==ide(p)?fa:p));
-	}
-	root=p;
-}
-
-inline void insert(int val)
-{
-	int p=root,fa=0;
-	while(p&amp;&amp;a[p].val!=val) fa=p,p=a[p].ch[val&gt;a[p].val];
-	if(p) a[p].cnt++,update(p);
-	else
-	{
-		p=++tot;
-		a[p].val=val;
-		a[p].fa=fa;
-		a[p].cnt=a[p].siz=1;
-		a[p].ch[0]=a[p].ch[1]=0;
-		if(fa) a[fa].ch[val&gt;a[fa].val]=p;
-	}
-	splay(p);
-}
-
-inline void find(int val)
-{
-	if(!root) return;
-	int p=root;
-	while(a[p].ch[val&gt;a[p].val]&amp;&amp;a[p].val!=val) p=a[p].ch[val&gt;a[p].val];
-	splay(p);
-}
-
-inline int get_rank(int p)
-{
-	find(p);
-	return a[a[root].ch[0]].siz;
-}
-
-inline int pre()
-{
-	int now=a[root].ch[0];
-	while(a[now].ch[1]) now=a[now].ch[1];
-	return now;
-}
-
-inline int nxt()
-{
-	int now=a[root].ch[1];
-	while(a[now].ch[0]) now=a[now].ch[0];
-	return now;
-}
-
-inline void Delete(int p)
-{
-	find(p);
-	if(a[root].cnt&gt;1)
-	{
-		a[root].cnt--;
-		update(root);
-		return;
-	}//situation 1
-	if(!a[root].ch[0]&amp;&amp;!a[root].ch[1])
-	{
-		clear(root);
-		root=0;
-		return;
-	}
-	if(!a[root].ch[0])
-	{
-		int tem=root;
-		a[root=a[root].ch[1]].fa=0;
-		clear(tem);
-		return;
-	}
-	if(!a[root].ch[1])
-	{
-		int tem=root;
-		a[root=a[root].ch[0]].fa=0;
-		clear(tem);
-		return;
-	}
-	int tem=root,last=pre();
-	splay(last);
-	connect(a[tem].ch[1],root,1);
-	clear(tem);
-	update(root);
-}
-
-inline int get_val(int x)
-{
-	x++;
-	int p=root;
-	while(1)
-	{
-		int ls=a[p].ch[0];
-		if(a[ls].siz&gt;=x) p=ls;
-		else if(a[ls].siz+a[p].cnt&lt;x)
-		{
-			x-=a[ls].siz+a[p].cnt;
-			p=a[p].ch[1];
-		}
-		else return a[p].val;
-	}
+	if(u!=1) f[u]=a[u];
+	for(int i=h[u];i;i=nxt[i]) if(ver[i]!=fa) dfs(ver[i],u);
+	cnt=0;
+	for(int i=h[u];i;i=nxt[i]) if(ver[i]!=fa) son[++cnt]=ver[i];
+	sort(son+1,son+1+cnt,cmp);//贪心的想，f[i]-g[i]是需要等待的时间，根据排队接水，需要往前放。
+	for(int i=1;i&lt;=cnt;i++) f[u]=max(f[u],f[son[i]]+g[u]+1),g[u]+=g[son[i]]+2;
+	//这个地方为什么f[son[i]]+g[u]要加1而不是2呢，我想了好久，详情请见我上面解析
 }
 
 int main()
 {
 	scanf(&quot;%d&quot;,&amp;n);
-	insert(INF),insert(-INF);
-	int op,x;
-	while(n--)
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+	for(int i=1;i&lt;n;i++)
 	{
-		scanf(&quot;%d%d&quot;,&amp;op,&amp;x);
-		switch(op)
-		{
-			case 1:
-				insert(x);
-				break;
-			case 2:
-				Delete(x);
-				break;
-			case 3:
-				printf(&quot;%d\n&quot;,get_rank(x));
-				break;
-			case 4:
-				printf(&quot;%d\n&quot;,get_val(x));
-				break;
-			case 5:
-				insert(x),printf(&quot;%d\n&quot;,a[pre()].val),Delete(x);
-				break;
-			case 6:
-				insert(x),printf(&quot;%d\n&quot;,a[nxt()].val),Delete(x);
-				break;
-		}
+		int x,y;
+		scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+		add(x,y),add(y,x);
 	}
+	dfs(1,0);
+	printf(&quot;%d&quot;,max(f[1],g[1]+a[1]));
 	return 0;
 }
 </code></pre>
-<h2 id="2treap传统树堆">2.Treap（传统树堆）</h2>
-<p>如果你理解了Splay的rotate操作，那么Treap便轻而易举。</p>
-<p>Treap=Tree+Heap，也就是说，这是一种既满足BST，又符合堆的性质的数据结构。</p>
-<p>BST由他的权值val体现，而堆则要靠我们随机赋的权dat体现。</p>
-<p>堆是为BST服务的，如果子树过重，它的dat会很大，整棵树就不平衡了（这点和替罪羊很像）</p>
-<p>这时我们就需要旋转来维护平衡，具体操作分为左旋和右旋</p>
-<p>操作很简单，就把它和左（右）儿子换位就行，注意维护一下BST的性质。</p>
-<p>（我曾经问过<a href="https://s1rius.top">S1rius</a>神仙：Treap会因为随机的dat被卡吗？）</p>
-<hr>
-<h4 id="如果你真的因为随机种子被卡了而不是你写挂了那么你可以去买彩票了">如果你真的因为随机种子被卡了，而不是你写挂了，那么你可以去买彩票了。</h4>
-<hr>
-<p>贴一下代码（初学敲的李煜东的板子）</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-const int N=1e6+9;
-const int INF=1&lt;&lt;30;
-struct Treap{
-	int l,r;
-	int val,siz,cnt,dat;
-} a[N];
-int tot,root,n;
-
-inline void update(int x)
-{
-	a[x].siz=a[a[x].l].siz+a[a[x].r].siz+a[x].cnt;
-}
-
-inline int New(int val)
-{
-	a[++tot].val=val;
-	a[tot].siz=a[tot].cnt=1;
-	a[tot].dat=rand();
-	return tot;
-}
-
-inline void build()
-{
-	New(-INF),New(INF);
-	root=1,a[1].r=2;
-	update(1);
-}
-
-inline void zig(int &amp;p)
-{
-	int q=a[p].l;
-	a[p].l=a[q].r,a[q].r=p,p=q;
-	update(a[p].r),update(p);
-}
-
-inline void zag(int &amp;p)
-{
-	int q=a[p].r;
-	a[p].r=a[q].l,a[q].l=p,p=q;
-	update(a[p].l),update(p);
-}
-
-inline void insert(int &amp;p,int val)
-{
-	if(p==0)
-	{
-		p=New(val);
-		return;
-	}
-	if(val==a[p].val)
-	{
-		a[p].cnt++;
-		update(p);
-		return;
-	}
-	if(val&gt;a[p].val) 
-	{
-		insert(a[p].r,val);
-		if(a[a[p].r].dat&gt;a[p].dat) zag(p);
-	}
-	else
-	{
-		insert(a[p].l,val);
-		if(a[a[p].l].dat&gt;a[p].dat) zig(p);
-	}
-	update(p);
-}
-
-inline void Delete(int &amp;p,int val)
-{
-	if(p==0) return;
-	if(a[p].val==val)
-	{
-		if(a[p].cnt&gt;1)
-		{
-			a[p].cnt--;
-			update(p);
-			return;
-		}
-		if(a[p].l||a[p].r)
-		{
-			if(a[p].r==0||a[a[p].l].dat&gt;a[a[p].r].dat) zig(p),Delete(a[p].r,val);
-			else zag(p),Delete(a[p].l,val);
-			update(p);
-		}
-		else p=0;
-		return;
-	}
-	val&lt;a[p].val?Delete(a[p].l,val):Delete(a[p].r,val);
-	update(p);
-}
-
-inline int get_rank(int p,int val)
-{
-	if(p==0) return 0;
-	if(val==a[p].val) return a[a[p].l].siz+1;
-	if(val&lt;a[p].val) return get_rank(a[p].l,val);
-	return get_rank(a[p].r,val)+a[p].cnt+a[a[p].l].siz;
-}
-
-inline int get_val(int p,int rank)
-{
-	if(p==0) return INF;
-	if(a[a[p].l].siz&gt;=rank) return get_val(a[p].l,rank);
-	if(a[a[p].l].siz+a[p].cnt&gt;=rank) return a[p].val;
-	return get_val(a[p].r,rank-a[a[p].l].siz-a[p].cnt);
-}
-
-inline int get_pre(int val)
-{
-	int p=root,pre;
-	while(p)
-	{
-		if(a[p].val&lt;val) pre=a[p].val,p=a[p].r;
-		else p=a[p].l;
-	}
-	return pre;
-}
-
-inline int get_next(int val)
-{
-	int p=root,nxt;
-	while(p)
-	{
-		if(a[p].val&gt;val) nxt=a[p].val,p=a[p].l;
-		else p=a[p].r;
-	}
-	return nxt;
-}
-
-int main()
-{
-	build();
-	scanf(&quot;%d&quot;,&amp;n);
-	int op,x;
-	while(n--)
-	{
-		scanf(&quot;%d%d&quot;,&amp;op,&amp;x);
-		switch(op)
-		{
-			case 1:
-				insert(root,x);
-				break;
-			case 2:
-				Delete(root,x);
-				break;
-			case 3:
-				printf(&quot;%d\n&quot;,get_rank(root,x)-1);
-				break;
-			case 4:
-				printf(&quot;%d\n&quot;,get_val(root,x+1));
-				break;
-			case 5:
-				printf(&quot;%d\n&quot;,get_pre(x));
-				break;
-			case 6:
-				printf(&quot;%d\n&quot;,get_next(x));
-				break;
-		}
-	}
-	return 0;
-}  
-</code></pre>
-<h2 id="3fhq-treap非旋树堆">3.fhq-Treap（非旋树堆）</h2>
-<p>不会，先咕着</p>
-<h2 id="4scapegoat-tree替罪羊树">4.Scapegoat Tree（替罪羊树）</h2>
-<p>咕</p>
-<h2 id="5wblt">5.WBLT</h2>
-<p>去<a href="https://true-banana.github.io/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-WBLT/">这里</a></p>
 
               </div>
               <div class="post-footer">
@@ -937,7 +593,7 @@ int main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/da-wu/" title="平衡树全家桶">平衡树全家桶</a>
+      <a href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/" title="题解 [POI2014]FAR-FarmCraft">题解 [POI2014]FAR-FarmCraft</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -946,21 +602,17 @@ int main()
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/5KwHqZ80p/"># 数据结构</a>
+      <a href="https://alan-sp.github.io/tag/BqmQeZXwL/"># 题解</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="扩展中国剩余定理 学习笔记" href="https://alan-sp.github.io/post/kuo-zhan-zhong-guo-sheng-yu-ding-li-xue-xi-bi-ji/">扩展中国剩余定理 学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="扩展中国剩余定理 学习笔记" href="https://alan-sp.github.io/post/kuo-zhan-zhong-guo-sheng-yu-ding-li-xue-xi-bi-ji/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Hello Gridea" href="https://alan-sp.github.io/post/hello-gridea/">Hello Gridea</a>
-        <a class="nav-mobile-next" title="Hello Gridea" href="https://alan-sp.github.io/post/hello-gridea/">下一篇</a>
+        <a class="nav-pc-next" title=" 数论函数 学习笔记" href="https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-ji/"> 数论函数 学习笔记</a>
+        <a class="nav-mobile-next" title=" 数论函数 学习笔记" href="https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-ji/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

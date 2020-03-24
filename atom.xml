@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-03-20T00:23:53.369Z</updated>
+    <updated>2020-03-24T13:44:13.605Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[学习笔记    回文树]]></title>
+        <id>https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/</id>
+        <link href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">
+        </link>
+        <updated>2020-03-24T13:43:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>回文树，也叫回文自动机（PAM）。是OI中一种常用的自动机，用来处理子串回文并相互有联系的一类问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>回文树，也叫回文自动机（PAM）。是OI中一种常用的自动机，用来处理子串回文并相互有联系的一类问题。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 [POI2014]FAR-FarmCraft]]></title>
         <id>https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/</id>

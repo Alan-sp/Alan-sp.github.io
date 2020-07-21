@@ -7,7 +7,7 @@
 <meta name="keywords" content="AlanSP">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>学习笔记    回文树 | AlanSP&#39;s  Blog</title>
+<title>折半搜索   学习笔记 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1595298383824">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="学习笔记    回文树" />
-    <meta name="keywords" content="字符串,数据结构" />
+    <meta name="description" content="折半搜索   学习笔记" />
+    <meta name="keywords" content="搜索" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -205,8 +205,12 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E5%BB%BA%E7%AB%8B">1.回文树的建立</a></li>
-<li><a href="#2%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E7%BB%B4%E6%8A%A4">2.回文树的维护</a></li>
+<li><a href="#1%E6%A6%82%E8%BF%B0">1.概述</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a>
+<ul>
+<li><a href="#p4799-ceoi2015-day2%E4%B8%96%E7%95%8C%E5%86%B0%E7%90%83%E9%94%A6%E6%A0%87%E8%B5%9B">P4799 [CEOI2015 Day2]世界冰球锦标赛</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -470,8 +474,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">
-      学习笔记    回文树
+    <a class="post-title-link" href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/">
+      折半搜索   学习笔记
     </a>
   </h1>
   <div class="post-meta">
@@ -479,7 +483,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-24</span>
+      <span>2020-07-21</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -488,14 +492,8 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/jN7p5rBs0/">
-              <span>字符串</span>
-            </a>、
-          
-        
-          
-            <a href="https://alan-sp.github.io/tag/5KwHqZ80p/">
-              <span>数据结构</span>
+            <a href="https://alan-sp.github.io/tag/EpHV6TWcL/">
+              <span>搜索</span>
             </a>
           
         
@@ -504,19 +502,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>414<span class="pc-show">字数</span></span>
+      <span>448<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/xue-xi-bi-ji-hui-wen-shu/" data-flag-title="学习笔记    回文树" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/zhe-ban-sou-suo-xue-xi-bi-ji/" data-flag-title="折半搜索   学习笔记" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -525,40 +523,68 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <!-- more -->
-<p>回文树，也叫回文自动机（PAM）。是OI中一种常用的自动机，用来处理子串回文并相互有联系的一类问题。</p>
+                <h2 id="1概述">1.概述</h2>
+<p>折半搜索，又称meet in the middle，通常是把不能直接做的题目分成两半。</p>
+<p>把这两半分别搜索。</p>
 <!-- more -->
-<h2 id="1回文树的建立">1.回文树的建立</h2>
-<pre><code class="language-cpp">struct Tries{
-	int ch[27],fail,len,sum;
-} T[N];
-int siz,lastans,cur,cnt=1;
-char str[N];
-</code></pre>
-<p>回文树是建立在字典树Tries上的一种自动机，类似AC自动机，也需要有fail指针（至于它的具体含义见下）。</p>
-<p>而回文树的每个节点是一个子串，不再是一个字符。</p>
-<p>它的每条边代表一个字符，从上往下走表示在父亲的子串两端各加一个边上的字符。</p>
-<p>同时，回文树也有两个根，奇根和偶根。</p>
-<p>初始化（奇根=1，偶根=0）：</p>
-<pre><code class="language-cpp">T[1].len=-1,T[0].len=0;//1 为奇根，0为偶根
-	T[1].fail=0,T[0].fail=1;//相互指，方便跳，因为任何串都满足奇根
-	//至于奇根的fail是为了get_fail
-</code></pre>
-<p>原因：如果你写过马拉车<s>都学回文树了肯定会manacher啊qwq</s></p>
-<p>那么你肯定知道回文串分为奇数长度和偶数长度。</p>
-<p>这两种串区别很明显，而它们分别对应奇数和偶数。</p>
-<p>len存当前节点的长度，sum存个数。</p>
-<p>cur代表上一个建立（访问）的节点，这个也很重要。</p>
-<h2 id="2回文树的维护">2.回文树的维护</h2>
-<p>fail指针的含义：当前节点的最长回文后缀。（注意是回文后缀）</p>
-<pre><code class="language-cpp">inline int get_fail(int cur,int now)
+<p>比如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的做法，有时可以分解为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>2</mn><mo>∗</mo><msup><mn>2</mn><mfrac><mi>n</mi><mn>2</mn></mfrac></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2*2^{\frac n 2})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.09708em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.84708em;"><span style="top:-3.363em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，但是要考虑合并的复杂度。</p>
+<p>合并时可以通过排序，使一部分有序，再通过二分或其他做法合并答案。</p>
+<p>其实折半状压也是运用类似的思想。</p>
+<p>可以解决一些统计方案，但爆搜会T的题目</p>
+<hr>
+<h2 id="2例题">2.例题</h2>
+<h3 id="p4799-ceoi2015-day2世界冰球锦标赛">P4799 [CEOI2015 Day2]世界冰球锦标赛</h3>
+<blockquote>
+<p>Bobek有M元钱，共有N场比赛，每场比赛的门票都有一个价格 <img src="https://www.zhihu.com/equation?tex=C_i" alt="[公式]" loading="lazy"> 。<br>
+问在总票价不超过M元钱的情况下，Bobek共有多少种不同的观赛方案。<br>
+注1：若方案1中观看了某场比赛，方案2中未观看该场，则认为两种方案不同。<br>
+注2： <img src="https://www.zhihu.com/equation?tex=1%5Cle+N%5Cle40%2C1%5Cle+M+%5Cle+10%5E%7B18%7D%2CC_i%5Cle10%5E%7B16%7D" alt="[公式]" loading="lazy"> 。</p>
+</blockquote>
+<p>折半搜索模板。</p>
+<p>只需要拆成两部分，二分查找合适的就行。</p>
+<p>注意相等的可以取，所以要用upper_bound查找，数量减一。</p>
+<p>但因为vector的下标从0开始，所以就不用了。</p>
+<hr>
+<p><strong>Code：</strong></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+#define int long long
+vector&lt;int&gt; a, b;
+int n, m, A[59], ans;
+inline void dfs(int l, int r, int sum, bool sign)
 {
-	while(str[now-T[cur].len-1]!=str[now]) cur=T[cur].fail;
-	return cur;
+	if (sum &gt; m)
+		return;
+	if (l &gt; r)
+	{
+		if (!sign)
+			a.push_back(sum);
+		else
+			b.push_back(sum);
+		return;
+	}
+	dfs(l + 1, r, sum + A[l], sign);
+	dfs(l + 1, r, sum, sign);
+}
+
+signed main()
+{
+	scanf(&quot;%lld%lld&quot;, &amp;n, &amp;m);
+	for (int i = 1; i &lt;= n; i++)
+		scanf(&quot;%lld&quot;, &amp;A[i]);
+	dfs(1, n / 2, 0, 0);
+	dfs(n / 2 + 1, n, 0, 1);
+	sort(a.begin(), a.end());
+	for (int i = 0; i &lt; b.size(); i++)
+		ans += upper_bound(a.begin(), a.end(), m - b[i]) - a.begin();
+	printf(&quot;%lld&quot;, ans);
+	return 0;
 }
 </code></pre>
-<p>暴力跳就可以<s>我不知道有没有用并查集维护这个东西的（（</s>。</p>
-<p>咕咕咕咕qwq</p>
+<hr>
 
               </div>
               <div class="post-footer">
@@ -569,7 +595,7 @@ char str[N];
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/" title="学习笔记    回文树">学习笔记    回文树</a>
+      <a href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/" title="折半搜索   学习笔记">折半搜索   学习笔记</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -578,23 +604,21 @@ char str[N];
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/jN7p5rBs0/"># 字符串</a>
-    
-      <a href="https://alan-sp.github.io/tag/5KwHqZ80p/"># 数据结构</a>
+      <a href="https://alan-sp.github.io/tag/EpHV6TWcL/"># 搜索</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">最长公共上升子序列（LCIS）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">上一篇</a>
+        <a class="nav-pc-next" title="组合数学 学习笔记" href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">组合数学 学习笔记</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="组合数学 学习笔记" href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">题解 [POI2014]FAR-FarmCraft</a>
-        <a class="nav-mobile-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">下一篇</a>
+        <a class="nav-pc-next" title=" 题解 [ZJOI2010] 基站选址" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/"> 题解 [ZJOI2010] 基站选址</a>
+        <a class="nav-mobile-next" title=" 题解 [ZJOI2010] 基站选址" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

@@ -7,7 +7,7 @@
 <meta name="keywords" content="AlanSP">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>学习笔记    回文树 | AlanSP&#39;s  Blog</title>
+<title>LIS&amp;LCS | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1595298383824">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="学习笔记    回文树" />
-    <meta name="keywords" content="字符串,数据结构" />
+    <meta name="description" content="LIS&LCS" />
+    <meta name="keywords" content="动态规划" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -203,10 +203,11 @@
               <div class="toc-box right-motion">
   <div class="toc-wrapper auto-number auto" id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#onlogn%E6%B1%82lislcs%E9%95%BF%E5%BA%A6"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</a><br>
+*
 <ul>
-<li><a href="#1%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E5%BB%BA%E7%AB%8B">1.回文树的建立</a></li>
-<li><a href="#2%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E7%BB%B4%E6%8A%A4">2.回文树的维护</a></li>
+<li><a href="#1%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">1.二分查找</a></li>
+<li><a href="#2%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">2.树状数组</a></li>
 </ul>
 </li>
 </ul>
@@ -470,8 +471,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">
-      学习笔记    回文树
+    <a class="post-title-link" href="https://alan-sp.github.io/post/lisandlcs/">
+      LIS&amp;LCS
     </a>
   </h1>
   <div class="post-meta">
@@ -479,7 +480,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-24</span>
+      <span>2020-07-21</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -488,14 +489,8 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/jN7p5rBs0/">
-              <span>字符串</span>
-            </a>、
-          
-        
-          
-            <a href="https://alan-sp.github.io/tag/5KwHqZ80p/">
-              <span>数据结构</span>
+            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
+              <span>动态规划</span>
             </a>
           
         
@@ -509,14 +504,14 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>414<span class="pc-show">字数</span></span>
+      <span>262<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/xue-xi-bi-ji-hui-wen-shu/" data-flag-title="学习笔记    回文树" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/lisandlcs/" data-flag-title="LIS&amp;LCS" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -525,40 +520,35 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <!-- more -->
-<p>回文树，也叫回文自动机（PAM）。是OI中一种常用的自动机，用来处理子串回文并相互有联系的一类问题。</p>
+                <h1 id="onlogn求lislcs长度"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</h1>
+<p><s>你怎么连这个都不会qwq</s></p>
 <!-- more -->
-<h2 id="1回文树的建立">1.回文树的建立</h2>
-<pre><code class="language-cpp">struct Tries{
-	int ch[27],fail,len,sum;
-} T[N];
-int siz,lastans,cur,cnt=1;
-char str[N];
+<h3 id="1二分查找">1.二分查找</h3>
+<p>在dp过程中维护单调栈d。</p>
+<p>其中d[i]表示长度为i的LIS的最优结尾元素。</p>
+<p>处理a[i]时，若它比结尾小，可以直接接上结尾元素a[len]。</p>
+<p>若大于结尾，则需在结尾之前插入。</p>
+<p>考虑维护的d具有单调性，采用二分。</p>
+<p>严格上升（下降）中，使用upper_bound。</p>
+<p>二分出第一个大于a[i]的数a[pos]。</p>
+<p>需要替换它。</p>
+<hr>
+<p><strong>正确性证明</strong>：</p>
+<p>因为二分出的pos为第一个比a[i]大的位置。</p>
+<p>所以a[pos]&gt;a[i]，可以发现，用a[i]替换a[pos]不会改变单调性。</p>
+<p>因为pos+1就比a[i]小了。</p>
+<p>并且a[i]显然作为lis的结尾要比a[pos]优。</p>
+<pre><code>len=1;
+for(int i=2;i&lt;=n;i++)
+	if(d[len]&gt;=a[i])d[++len]=a[i];
+	else {
+		int pos=upper_bound(d+1,d+1+len,a[i])-d;
+		d[pos]=a[i];
+	}
 </code></pre>
-<p>回文树是建立在字典树Tries上的一种自动机，类似AC自动机，也需要有fail指针（至于它的具体含义见下）。</p>
-<p>而回文树的每个节点是一个子串，不再是一个字符。</p>
-<p>它的每条边代表一个字符，从上往下走表示在父亲的子串两端各加一个边上的字符。</p>
-<p>同时，回文树也有两个根，奇根和偶根。</p>
-<p>初始化（奇根=1，偶根=0）：</p>
-<pre><code class="language-cpp">T[1].len=-1,T[0].len=0;//1 为奇根，0为偶根
-	T[1].fail=0,T[0].fail=1;//相互指，方便跳，因为任何串都满足奇根
-	//至于奇根的fail是为了get_fail
-</code></pre>
-<p>原因：如果你写过马拉车<s>都学回文树了肯定会manacher啊qwq</s></p>
-<p>那么你肯定知道回文串分为奇数长度和偶数长度。</p>
-<p>这两种串区别很明显，而它们分别对应奇数和偶数。</p>
-<p>len存当前节点的长度，sum存个数。</p>
-<p>cur代表上一个建立（访问）的节点，这个也很重要。</p>
-<h2 id="2回文树的维护">2.回文树的维护</h2>
-<p>fail指针的含义：当前节点的最长回文后缀。（注意是回文后缀）</p>
-<pre><code class="language-cpp">inline int get_fail(int cur,int now)
-{
-	while(str[now-T[cur].len-1]!=str[now]) cur=T[cur].fail;
-	return cur;
-}
-</code></pre>
-<p>暴力跳就可以<s>我不知道有没有用并查集维护这个东西的（（</s>。</p>
-<p>咕咕咕咕qwq</p>
+<hr>
+<h3 id="2树状数组">2.树状数组</h3>
+<p>过程中维护前缀最大值就好了。</p>
 
               </div>
               <div class="post-footer">
@@ -569,7 +559,7 @@ char str[N];
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/" title="学习笔记    回文树">学习笔记    回文树</a>
+      <a href="https://alan-sp.github.io/post/lisandlcs/" title="LIS&amp;LCS">LIS&amp;LCS</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -578,23 +568,21 @@ char str[N];
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/jN7p5rBs0/"># 字符串</a>
-    
-      <a href="https://alan-sp.github.io/tag/5KwHqZ80p/"># 数据结构</a>
+      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">最长公共上升子序列（LCIS）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">上一篇</a>
+        <a class="nav-pc-next" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">模拟赛 06.27</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">题解 [POI2014]FAR-FarmCraft</a>
-        <a class="nav-mobile-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">下一篇</a>
+        <a class="nav-pc-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">数位DP 学习笔记</a>
+        <a class="nav-mobile-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

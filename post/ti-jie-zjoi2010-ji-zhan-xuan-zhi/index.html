@@ -7,7 +7,7 @@
 <meta name="keywords" content="AlanSP">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>学习笔记    回文树 | AlanSP&#39;s  Blog</title>
+<title> 题解 [ZJOI2010] 基站选址 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1595298383824">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="学习笔记    回文树" />
-    <meta name="keywords" content="字符串,数据结构" />
+    <meta name="description" content=" 题解 [ZJOI2010] 基站选址" />
+    <meta name="keywords" content="动态规划,题解,数据结构" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -205,8 +205,12 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E5%BB%BA%E7%AB%8B">1.回文树的建立</a></li>
-<li><a href="#2%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E7%BB%B4%E6%8A%A4">2.回文树的维护</a></li>
+<li>
+<ul>
+<li><a href="#description"><strong>Description</strong></a></li>
+<li><a href="#code"><strong>code</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -470,8 +474,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">
-      学习笔记    回文树
+    <a class="post-title-link" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/">
+       题解 [ZJOI2010] 基站选址
     </a>
   </h1>
   <div class="post-meta">
@@ -479,7 +483,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-24</span>
+      <span>2020-07-21</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -488,8 +492,14 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/jN7p5rBs0/">
-              <span>字符串</span>
+            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
+              <span>动态规划</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/BqmQeZXwL/">
+              <span>题解</span>
             </a>、
           
         
@@ -504,19 +514,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>7分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>414<span class="pc-show">字数</span></span>
+      <span>1311<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/xue-xi-bi-ji-hui-wen-shu/" data-flag-title="学习笔记    回文树" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/" data-flag-title=" 题解 [ZJOI2010] 基站选址" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -525,40 +535,157 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <!-- more -->
-<p>回文树，也叫回文自动机（PAM）。是OI中一种常用的自动机，用来处理子串回文并相互有联系的一类问题。</p>
+                <h3 id="description"><strong>Description</strong></h3>
+<blockquote>
+<p>有 N 个村庄坐落在一条直线上，第 i(i&gt;1) 个村庄距离第 1个村庄的距离为 $$D_i$$。需要在这些村庄中建立不超过 <em>K</em>个通讯基站，在第 i个村庄建立基站的费用为 $$C_i$$。如果在距离第 i 个村庄不超过 $$S_i$$ 的范围内建立了一个通讯基站，那么就村庄被基站覆盖了。如果第 i 个村庄没有被覆盖，则需要向他们补偿，费用为 $$W_i$$。现在的问题是，选择基站的位置，使得总费用最小。</p>
+</blockquote>
+<hr>
 <!-- more -->
-<h2 id="1回文树的建立">1.回文树的建立</h2>
-<pre><code class="language-cpp">struct Tries{
-	int ch[27],fail,len,sum;
-} T[N];
-int siz,lastans,cur,cnt=1;
-char str[N];
-</code></pre>
-<p>回文树是建立在字典树Tries上的一种自动机，类似AC自动机，也需要有fail指针（至于它的具体含义见下）。</p>
-<p>而回文树的每个节点是一个子串，不再是一个字符。</p>
-<p>它的每条边代表一个字符，从上往下走表示在父亲的子串两端各加一个边上的字符。</p>
-<p>同时，回文树也有两个根，奇根和偶根。</p>
-<p>初始化（奇根=1，偶根=0）：</p>
-<pre><code class="language-cpp">T[1].len=-1,T[0].len=0;//1 为奇根，0为偶根
-	T[1].fail=0,T[0].fail=1;//相互指，方便跳，因为任何串都满足奇根
-	//至于奇根的fail是为了get_fail
-</code></pre>
-<p>原因：如果你写过马拉车<s>都学回文树了肯定会manacher啊qwq</s></p>
-<p>那么你肯定知道回文串分为奇数长度和偶数长度。</p>
-<p>这两种串区别很明显，而它们分别对应奇数和偶数。</p>
-<p>len存当前节点的长度，sum存个数。</p>
-<p>cur代表上一个建立（访问）的节点，这个也很重要。</p>
-<h2 id="2回文树的维护">2.回文树的维护</h2>
-<p>fail指针的含义：当前节点的最长回文后缀。（注意是回文后缀）</p>
-<pre><code class="language-cpp">inline int get_fail(int cur,int now)
+<p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>表示前i个村庄建立j个基站，第i个强制选的最小价值。</p>
+<p>经过一番考虑，我们容易得到一下的DP方程：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><munder><mi>min</mi><mo>⁡</mo><mrow><mi>k</mi><mo>∈</mo><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow></munder><mo>{</mo><mi>f</mi><mo>[</mo><mi>k</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>+</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>k</mi><mo separator="true">,</mo><mi>i</mi><mo>)</mo><mo>}</mo><mo>+</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i][j]=\min_{k\in[1,i-1]}\{f[k][j-1]+cost(k,i)\}+c[i]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.716em;vertical-align:-0.966em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.66786em;"><span style="top:-2.009em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">∈</span><span class="mopen mtight">[</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">]</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.966em;"><span></span></span></span></span></span><span class="mopen">{</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span></span></p>
+<p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>k</mi><mo separator="true">,</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">cost(k,i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span>表示<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \and at position 18: …um_{D_k&lt;D_p-S_p\̲a̲n̲d̲ ̲D_i&gt;D_p+S_p}W[p…'>\sum_{D_k&lt;D_p-S_p\and D_i&gt;D_p+S_p}W[p]</span>。</p>
+<p>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>k</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span>。</p>
+<p>发现j这一维只有j-1有关，可以提出到外面，分层进行dp，类似01背包。</p>
+<p>瓶颈在于如何计算<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>k</mi><mo separator="true">,</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">cost(k,i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span>。</p>
+<hr>
+<p><strong>规约：</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">L[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>表示能够覆盖到i的左端点，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>表示能够覆盖到i的右端点。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo separator="true">,</mo><mi>R</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">L[i],R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>可以通过二分第一个大于等于（小于等于）<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mi>i</mi></msub><mo>+</mo><msub><mi>D</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">S_i+D_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的数。</p>
+<p>我们知道，随着i的右移，左边的某些基站便不再能覆盖当前的i。</p>
+<p>也就是说每次i有移动，那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>L</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>−</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,L[i]-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">L</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>里面的f值肯定要加上<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>W</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">W_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<p>对于每次f[i]的转移，可以不用枚举，若是能查询到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>中f的最小值，那么便可以直接转移。</p>
+<p>实现上述操作，区间查询&amp;区间加，我们可以采用线段树来维护。</p>
+<p>这样能够做到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>k</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nk\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<p>而对于维护i移动后哪些点会收到影响，也就是维护i是哪些点的R值，我们可以采取邻接表。</p>
+<p>因为只要i移动，那些点对于后来的i，肯定要付出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>W</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">W_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>代价。</p>
+<p>而邻接表有效的节省了空间，同样便于插入。</p>
+<p>最后补一张图</p>
+<p>()</p>
+<p>（P.S. 线段树可以重复利用，每个j决策更新一遍）</p>
+<hr>
+<h3 id="code"><strong>code</strong></h3>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+using namespace std;
+#define int long long
+#define ls (x&lt;&lt;1)
+#define rs (x&lt;&lt;1|1)
+const int N=20009,INF=0x3f3f3f3f;
+int n,k,d[N],s[N],w[N],c[N],f[N],L[N],R[N],ans,sum;
+int nxt[N&lt;&lt;2],ver[N&lt;&lt;2],h[N],tot;
+struct Segment_Tree 
 {
-	while(str[now-T[cur].len-1]!=str[now]) cur=T[cur].fail;
-	return cur;
+	int tag,val;
+} tr[N&lt;&lt;2];
+
+inline void add(int x,int y)
+{
+	ver[++tot]=y,nxt[tot]=h[x],h[x]=tot;
+}
+
+inline void build(int x,int l,int r)
+{
+	tr[x].tag=0;
+	if(l==r)
+	{
+		// tr[x].tag=0;
+		tr[x].val=f[l];
+		return;
+	}
+	int mid=(l+r)&gt;&gt;1;
+	build(ls,l,mid);
+	build(rs,mid+1,r);
+	tr[x].val=min(tr[ls].val,tr[rs].val);
+}
+
+inline void down(int x,int l,int r)
+{
+	int c=tr[x].tag;
+	tr[ls].tag+=c;
+	tr[rs].tag+=c;
+	tr[ls].val+=c;
+	tr[rs].val+=c;
+	tr[x].tag=0;
+}
+
+inline int query(int x,int l,int r,int L,int R)
+{
+	if(L&lt;=l&amp;&amp;r&lt;=R) return tr[x].val;
+	int mid=(l+r)&gt;&gt;1,res=INF;
+	if(tr[x].tag) down(x,l,r);
+	if(L&lt;=mid) res=min(res,query(ls,l,mid,L,R));
+	if(R&gt;mid) res=min(res,query(rs,mid+1,r,L,R));
+	return res;
+}
+
+inline void change(int x,int l,int r,int L,int R,int c)
+{
+	if(L&lt;=l&amp;&amp;r&lt;=R)
+	{
+		tr[x].tag+=c;
+		tr[x].val+=c;
+		return;
+	}
+	int mid=(l+r)&gt;&gt;1;
+	if(tr[x].tag) down(x,l,r);
+	if(L&lt;=mid) change(ls,l,mid,L,R,c);
+	if(R&gt;mid) change(rs,mid+1,r,L,R,c);
+	tr[x].val=min(tr[ls].val,tr[rs].val);
+}
+
+signed main()
+{
+	scanf(&quot;%lld%lld&quot;,&amp;n,&amp;k);
+	for(int i=2;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;d[i]);
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;c[i]);
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;s[i]);
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;w[i]);
+	k++,n++;
+	d[n]=w[n]=INF;
+	s[n]=c[n]=0;
+	for(int i=1;i&lt;=n;i++)
+	{
+		L[i]=lower_bound(d+1,d+1+n,d[i]-s[i])-d;
+		R[i]=lower_bound(d+1,d+1+n,d[i]+s[i])-d;
+		if(d[R[i]]&gt;d[i]+s[i]) R[i]--;
+		// if(i==n) printf(&quot;%lld\n&quot;,R[n]);
+		add(R[i],i);
+	}
+	// printf(&quot;%d %d\n&quot;,L[n],R[n]);
+	for(int i=1;i&lt;=n;i++)
+	{
+		f[i]=sum+c[i];//记f[i]为强制选i建基站所最小价值
+		for(int j=h[i];j;j=nxt[j])
+		{
+			sum+=w[ver[j]];	
+		}//sum进行累加
+	}
+	ans=f[n];
+	// for(int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,f[i]);
+	for(int j=2;j&lt;=k;j++)
+	{
+		build(1,1,n);//每次重新建树
+		for(int i=1;i&lt;=n;i++)
+		{
+			// puts(&quot;DEBUG&quot;);
+			if(i&gt;1) f[i]=query(1,1,n,1,i-1)+c[i];
+			else f[i]=INF;
+			for(int u=h[i];u;u=nxt[u])
+			{
+				int v=ver[u];
+				if(L[v]&gt;1) change(1,1,n,1,L[v]-1,w[v]);
+			}
+		}
+		ans=min(ans,f[n]);
+		// printf(&quot;%d\n&quot;,f[n]);
+	}
+	printf(&quot;%lld&quot;,ans);
+	return 0;
 }
 </code></pre>
-<p>暴力跳就可以<s>我不知道有没有用并查集维护这个东西的（（</s>。</p>
-<p>咕咕咕咕qwq</p>
+<hr>
 
               </div>
               <div class="post-footer">
@@ -569,7 +696,7 @@ char str[N];
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/" title="学习笔记    回文树">学习笔记    回文树</a>
+      <a href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/" title=" 题解 [ZJOI2010] 基站选址"> 题解 [ZJOI2010] 基站选址</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -578,7 +705,9 @@ char str[N];
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/jN7p5rBs0/"># 字符串</a>
+      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
+    
+      <a href="https://alan-sp.github.io/tag/BqmQeZXwL/"># 题解</a>
     
       <a href="https://alan-sp.github.io/tag/5KwHqZ80p/"># 数据结构</a>
     
@@ -587,14 +716,14 @@ char str[N];
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">最长公共上升子序列（LCIS）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">上一篇</a>
+        <a class="nav-pc-next" title="折半搜索   学习笔记" href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/">折半搜索   学习笔记</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="折半搜索   学习笔记" href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">题解 [POI2014]FAR-FarmCraft</a>
-        <a class="nav-mobile-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">下一篇</a>
+        <a class="nav-pc-next" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">模拟赛 06.27</a>
+        <a class="nav-mobile-next" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

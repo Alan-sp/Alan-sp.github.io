@@ -1981,11 +1981,11 @@ body {
       transition-duration: 59s;
       transition-timing-function: cubic-bezier(.34,0,.84,1);
     }.markdownIt-TOC a {
-      color: #eee;
-      border-bottom-color: #eee;
+      color: rgba(220,0,0,0.5);
+      border-bottom-color: rgba(220,0,0,0.5);
     }.markdownIt-TOC a:hover {
-      color: #fff;
-      border-bottom-color: #fff;
+      color: rgba(220,0,0,0.5);
+      border-bottom-color: rgba(220,0,0,0.5);
     }.active-current > a {
       color: #fc6423 !important;
       border-bottom-color: #fc6423 !important;

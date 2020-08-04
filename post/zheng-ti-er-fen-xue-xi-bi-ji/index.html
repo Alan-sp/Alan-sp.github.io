@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>折半搜索   学习笔记 | AlanSP&#39;s  Blog</title>
+<title>整体二分 学习笔记 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1596501183874">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="折半搜索   学习笔记" />
-    <meta name="keywords" content="搜索" />
+    <meta name="description" content="整体二分 学习笔记" />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -229,10 +229,11 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1%E6%A6%82%E8%BF%B0">1.概述</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a>
+<li>
 <ul>
-<li><a href="#p4799-ceoi2015-day2%E4%B8%96%E7%95%8C%E5%86%B0%E7%90%83%E9%94%A6%E6%A0%87%E8%B5%9B">P4799 [CEOI2015 Day2]世界冰球锦标赛</a></li>
+<li><a href="#0%E5%BC%95%E8%BF%B0">0.引述</a></li>
+<li><a href="#1%E5%BC%95%E8%BF%B0">1.引述</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a></li>
 </ul>
 </li>
 </ul>
@@ -498,8 +499,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/">
-      折半搜索   学习笔记
+    <a class="post-title-link" href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">
+      整体二分 学习笔记
     </a>
   </h1>
   <div class="post-meta">
@@ -507,38 +508,25 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-07-21</span>
+      <span>2020-08-04</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
-      <span class="meta-item">
-        <i class="fa fa-folder-o"></i>
-        <span class="pc-show">分类于</span>
-        
-          
-            <a href="https://alan-sp.github.io/tag/EpHV6TWcL/">
-              <span>搜索</span>
-            </a>
-          
-        
-      </span>
-      <span class="post-meta-divider">|</span>
-    
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3分钟</span>
+      <span>7分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>448<span class="pc-show">字数</span></span>
+      <span>1282<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/zhe-ban-sou-suo-xue-xi-bi-ji/" data-flag-title="折半搜索   学习笔记" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/zheng-ti-er-fen-xue-xi-bi-ji/" data-flag-title="整体二分 学习笔记" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -547,68 +535,144 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <h2 id="1概述">1.概述</h2>
-<p>折半搜索，又称meet in the middle，通常是把不能直接做的题目分成两半。</p>
-<p>把这两半分别搜索。</p>
-<!-- more -->
-<p>比如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的做法，有时可以分解为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>2</mn><mo>∗</mo><msup><mn>2</mn><mfrac><mi>n</mi><mn>2</mn></mfrac></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2*2^{\frac n 2})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.09708em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.84708em;"><span style="top:-3.363em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，但是要考虑合并的复杂度。</p>
-<p>合并时可以通过排序，使一部分有序，再通过二分或其他做法合并答案。</p>
-<p>其实折半状压也是运用类似的思想。</p>
-<p>可以解决一些统计方案，但爆搜会T的题目</p>
-<hr>
-<h2 id="2例题">2.例题</h2>
-<h3 id="p4799-ceoi2015-day2世界冰球锦标赛">P4799 [CEOI2015 Day2]世界冰球锦标赛</h3>
+                <h3 id="0引述">0.引述</h3>
+<p>来看这样一道题：</p>
 <blockquote>
-<p>Bobek有M元钱，共有N场比赛，每场比赛的门票都有一个价格 <img src="https://www.zhihu.com/equation?tex=C_i" alt="[公式]" loading="lazy"> 。<br>
-问在总票价不超过M元钱的情况下，Bobek共有多少种不同的观赛方案。<br>
-注1：若方案1中观看了某场比赛，方案2中未观看该场，则认为两种方案不同。<br>
-注2： <img src="https://www.zhihu.com/equation?tex=1%5Cle+N%5Cle40%2C1%5Cle+M+%5Cle+10%5E%7B18%7D%2CC_i%5Cle10%5E%7B16%7D" alt="[公式]" loading="lazy"> 。</p>
+<p>多次询问，查询静态区间k小，<strong>可离线</strong>。</p>
 </blockquote>
-<p>折半搜索模板。</p>
-<p>只需要拆成两部分，二分查找合适的就行。</p>
-<p>注意相等的可以取，所以要用upper_bound查找，数量减一。</p>
-<p>但因为vector的下标从0开始，所以就不用了。</p>
+<!-- more -->
+<p>相信很多人都想到了主席树，但我们发现题中可以离线，所以我们有了一种常数小，debug方便，码量小的方法:</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="2.488em"><mtext>整体二分</mtext></mstyle></mrow><annotation encoding="application/x-tex">\Huge\text{整体二分}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7001250399999999em;vertical-align:0em;"></span><span class="mord text sizing reset-size6 size11"><span class="mord cjk_fallback">整体二分</span></span></span></span></span>。</p>
 <hr>
-<p><strong>Code：</strong></p>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-using namespace std;
-#define int long long
-vector&lt;int&gt; a, b;
-int n, m, A[59], ans;
-inline void dfs(int l, int r, int sum, bool sign)
+<h3 id="1引述">1.引述</h3>
+<p>整体二分，是指将询问，修改等操作一起二分，基于值域。</p>
+<p>传入的时候传四个参数：l,r,L,R。</p>
+<p>表示值域在l到r内，操作在L到R内的操作答案。</p>
+<p>处理的时候把操作分治，分到左右区间里。</p>
+<p>同时，要使用树状数组，对左区间操作。</p>
+<p>往下分治时，记住要撤销上次操作的影响，即清空树状数组。</p>
+<p>整体二分还是很套路的，唯一不同的是树状数组中维护的内容。</p>
+<pre><code class="language-cpp">inline void solve(int l,int r,int L,int R)
 {
-	if (sum &gt; m)
-		return;
-	if (l &gt; r)
+	if(L&gt;R) return;//防越界
+	if(l==r)
 	{
-		if (!sign)
-			a.push_back(sum);
-		else
-			b.push_back(sum);
+		for(int i=L;i&lt;=R;i++) if(q[i].op==2) ans[q[i].id]=l;
+		//当区间缩小为1时，表示[L,R]内的查询答案都是当前的数，直接赋值就好
 		return;
 	}
-	dfs(l + 1, r, sum + A[l], sign);
-	dfs(l + 1, r, sum, sign);
+	int mid=(l+r)&gt;&gt;1,cnt1=0,cnt2=0;
+	for(int i=L;i&lt;=R;i++)
+	{
+		if(q[i].op==1)
+		{
+			//修改操作，若当前的数小于左边界的最大值，则统计左区间个数时可以算上
+			if(q[i].l&lt;=mid) q1[++cnt1]=q[i],add(q[i].id,q[i].r);
+			else q2[++cnt2]=q[i];
+		}
+		else
+		{
+			//查询操作，如果查询的k大于左区间的个数，就分到右边
+			int tmp=ask(q[i].r)-ask(q[i].l-1);//左区间个数
+			if(q[i].k&lt;=tmp) q1[++cnt1]=q[i];
+			else q[i].k-=tmp,q2[++cnt2]=q[i];
+		}
+	}
+	for(int i=1;i&lt;=cnt1;i++) if(q1[i].op==1) add(q1[i].id,-q1[i].r);//撤销操作
+	for(int i=1;i&lt;=cnt1;i++) q[L+i-1]=q1[i];//分治下去操作
+	for(int i=1;i&lt;=cnt2;i++) q[L+cnt1+i-1]=q2[i];
+	solve(l,mid,L,L+cnt1-1);
+	solve(mid+1,r,L+cnt1,R);
+}
+</code></pre>
+<hr>
+<h3 id="2例题">2.例题</h3>
+<p>重要的还是例题~~。</p>
+<ul>
+<li><strong><a href="https://www.luogu.com.cn/problem/P1533">P1533 可怜的狗狗</a></strong></li>
+</ul>
+<p>模板题，树状数组为值域树状数组，查询可以直接仿照主席树的做法。</p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+const int N=2e5+9,INF=0x3f3f3f3f;
+#define lowbit(x) (x&amp;-x)
+struct Query
+{
+	int l,r,k,id,op;
+} q[N*3],q1[N*3],q2[N*3];
+int n,m,a[N],cnt,cntq,ans[N],tr[N];
+char op[2];
+inline void add(int x,int c){while(x&lt;=n){tr[x]+=c,x+=lowbit(x);}}
+inline int ask(int x){int res=0;while(x){res+=tr[x],x-=lowbit(x);}return res;}
+
+inline void solve(int l,int r,int L,int R)
+{
+	if(L&gt;R) return;//防越界
+	if(l==r)
+	{
+		for(int i=L;i&lt;=R;i++) if(q[i].op==2) ans[q[i].id]=l;
+		//当区间缩小为1时，表示[L,R]内的查询答案都是当前的数，直接赋值就好
+		return;
+	}
+	int mid=(l+r)&gt;&gt;1,cnt1=0,cnt2=0;
+	for(int i=L;i&lt;=R;i++)
+	{
+		if(q[i].op==1)
+		{
+			//修改操作，若当前的数小于左边界的最大值，则统计左区间个数时可以算上
+			if(q[i].l&lt;=mid) q1[++cnt1]=q[i],add(q[i].id,q[i].r);
+			else q2[++cnt2]=q[i];
+		}
+		else
+		{
+			//查询操作，如果查询的k大于左区间的个数，就分到右边
+			int tmp=ask(q[i].r)-ask(q[i].l-1);//左区间个数
+			if(q[i].k&lt;=tmp) q1[++cnt1]=q[i];
+			else q[i].k-=tmp,q2[++cnt2]=q[i];
+		}
+	}
+	for(int i=1;i&lt;=cnt1;i++) if(q1[i].op==1) add(q1[i].id,-q1[i].r);//撤销操作
+	for(int i=1;i&lt;=cnt1;i++) q[L+i-1]=q1[i];//分治下去操作
+	for(int i=1;i&lt;=cnt2;i++) q[L+cnt1+i-1]=q2[i];
+	solve(l,mid,L,L+cnt1-1);
+	solve(mid+1,r,L+cnt1,R);
 }
 
-signed main()
+int main()
 {
-	scanf(&quot;%lld%lld&quot;, &amp;n, &amp;m);
-	for (int i = 1; i &lt;= n; i++)
-		scanf(&quot;%lld&quot;, &amp;A[i]);
-	dfs(1, n / 2, 0, 0);
-	dfs(n / 2 + 1, n, 0, 1);
-	sort(a.begin(), a.end());
-	for (int i = 0; i &lt; b.size(); i++)
-		ans += upper_bound(a.begin(), a.end(), m - b[i]) - a.begin();
-	printf(&quot;%lld&quot;, ans);
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);//初始序列视为修改
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]),q[++cnt]=(Query){a[i],1,0,i,1};
+	for(int i=1;i&lt;=m;i++)
+	{
+		int l,r,k;
+		scanf(&quot;%s&quot;,op);
+		scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
+		if(op[0]=='Q')
+			scanf(&quot;%d&quot;,&amp;k),q[++cnt]=(Query){l,r,k,++cntq,2};
+		else q[++cnt]=(Query){a[l],-1,0,l,1},q[++cnt]=(Query){r,1,0,l,1},a[l]=r;
+	}
+	solve(-INF,INF,1,cnt);
+	for(int i=1;i&lt;=cntq;i++) printf(&quot;%d\n&quot;,ans[i]);
 	return 0;
 }
 </code></pre>
 <hr>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P3527">P3527 [POI2011]MET-Meteors</a></li>
+</ul>
+<p>这题就比较经典了。</p>
+<p>操作为区间加，单点查到达某个值的时间。</p>
+<p>这时候我们就要把区间加和单点查进行整体二分。</p>
+<p>开始时，先把[l,mid]的区间加进行实现。</p>
+<p>在查询时，如果当前国家的封地能量总合已经大于期望，那么证明达到满足它的期望的时间一定在[l,mid]的区间加内。</p>
+<p>反正，则在右区间。</p>
+<p>记得要保存每个国家的封地有哪些，可以用vector或者邻接表。</p>
+<p>还注意破环成链，查询时记住把v和v+i的答案都算上。</p>
+<p>记得撤销操作。</p>
+<p><strong>Warning：邻接表的表头要和查询打包到一个结构体里，否则在操作下放的时候无法把表头h传递下去，即q[i]=q1[...]时要传递表头。</strong></p>
+<p>代码我就放在这里🌶：</p>
+<p><a href="https://www.luogu.com.cn/paste/jhe625l5"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="2.074em"><mtext>Code</mtext></mstyle></mrow><annotation encoding="application/x-tex">\huge\text{Code}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4402685599999998em;vertical-align:0em;"></span><span class="mord text sizing reset-size6 size10"><span class="mord">Code</span></span></span></span></span></a></p>
 
               </div>
               <div class="post-footer">
@@ -619,7 +683,7 @@ signed main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/" title="折半搜索   学习笔记">折半搜索   学习笔记</a>
+      <a href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/" title="整体二分 学习笔记">整体二分 学习笔记</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -628,21 +692,15 @@ signed main()
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/EpHV6TWcL/"># 搜索</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="组合数学 学习笔记" href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">组合数学 学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="组合数学 学习笔记" href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title=" 题解 [ZJOI2010] 基站选址" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/"> 题解 [ZJOI2010] 基站选址</a>
-        <a class="nav-mobile-next" title=" 题解 [ZJOI2010] 基站选址" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/">下一篇</a>
+        <a class="nav-pc-next" title="[ZJOI2014] 力 解题报告" href="https://alan-sp.github.io/post/zjoi2014-li-jie-ti-bao-gao/">[ZJOI2014] 力 解题报告</a>
+        <a class="nav-mobile-next" title="[ZJOI2014] 力 解题报告" href="https://alan-sp.github.io/post/zjoi2014-li-jie-ti-bao-gao/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

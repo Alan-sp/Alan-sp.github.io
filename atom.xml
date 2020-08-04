@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-08-02T00:03:46.409Z</updated>
+    <updated>2020-08-04T00:33:19.498Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[整体二分 学习笔记]]></title>
+        <id>https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/</id>
+        <link href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">
+        </link>
+        <updated>2020-08-04T00:31:01.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="0引述">0.引述</h3>
+<p>来看这样一道题：</p>
+<blockquote>
+<p>多次询问，查询静态区间k小，<strong>可离线</strong>。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="0引述">0.引述</h3>
+<p>来看这样一道题：</p>
+<blockquote>
+<p>多次询问，查询静态区间k小，<strong>可离线</strong>。</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[ZJOI2014] 力 解题报告]]></title>
         <id>https://alan-sp.github.io/post/zjoi2014-li-jie-ti-bao-gao/</id>
@@ -151,19 +170,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<h1 id="20200627">2020.06.27</h1>
 <p><s>菜到抠，连数字三角形都写挂了</s></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[LIS&LCS]]></title>
-        <id>https://alan-sp.github.io/post/lisandlcs/</id>
-        <link href="https://alan-sp.github.io/post/lisandlcs/">
-        </link>
-        <updated>2020-07-21T02:06:52.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="onlogn求lislcs长度"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</h1>
-<p><s>你怎么连这个都不会qwq</s></p>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="onlogn求lislcs长度"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</h1>
-<p><s>你怎么连这个都不会qwq</s></p>
 ]]></content>
     </entry>
 </feed>

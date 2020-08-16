@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>学习笔记    回文树 | AlanSP&#39;s  Blog</title>
+<title>最大权闭合子图 学习笔记 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1597582155957">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="学习笔记    回文树" />
-    <meta name="keywords" content="字符串,数据结构" />
+    <meta name="description" content="最大权闭合子图 学习笔记" />
+    <meta name="keywords" content="图论,网络流" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -148,8 +148,7 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            <div class="post-side-meta" id="post_side_meta">
-              
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://alan-sp.github.io/images/avatar.png"/>
@@ -222,191 +221,6 @@
   </div>
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number manual" id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#1%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E5%BB%BA%E7%AB%8B">1.回文树的建立</a></li>
-<li><a href="#2%E5%9B%9E%E6%96%87%E6%A0%91%E7%9A%84%E7%BB%B4%E6%8A%A4">2.回文树的维护</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-</div>
-
-<script>
-
-let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1; 
-let active = 'active-show', activeClass = 'active-current';
-let tocWrapper = document.querySelector('#toc_wrapper');
-let tocContent = tocWrapper.children[0];
-let autoNumber = tocWrapper&&tocWrapper.classList.contains('auto-number');
-
-function addTocNumber(elem, deep) {
-  if (!elem) {
-    return;
-  }
-  let prop = elem.__proto__;
-
-  if (prop === HTMLUListElement.prototype) {
-    for (let i = 0; i < elem.children.length; i++) {
-      addTocNumber(elem.children[i], deep + (i + 1) + '.');
-    }
-  } else if (prop === HTMLLIElement.prototype) {
-    // 保存li元素
-    if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-      lList.push(elem);
-    }
-    for (let i = 0; i < elem.children.length; i++) {
-      let cur = elem.children[i];
-      if (cur.__proto__ === HTMLAnchorElement.prototype) {
-        if (autoNumber) {
-          cur.text =  deep + ' ' + cur.text;
-        }
-      } else if (cur.__proto__ === HTMLUListElement.prototype) {
-        addTocNumber(cur, deep);
-      }
-    }
-  }
-}
-
-function removeParentActiveClass() {
-  let parents = tocContent.querySelectorAll('.'+active)
-  parents.forEach(function(elem) {
-    elem.classList.remove(active);
-  });
-}
-
-function addActiveClass(index) {
-  if (index >= 0 && index < hList.length) {
-    lList[index].classList.add(activeClass);
-  }
-}
-
-function removeActiveClass(index) {
-  if (index >= 0 && index < hList.length) {
-    lList[index].classList.remove(activeClass);
-  }
-}
-
-function addActiveLiElemment(elem, parent) {
-  if (!elem || elem === parent) {
-    return;
-  } else {
-    if (elem.__proto__ === HTMLLIElement.prototype) {
-      elem.classList.add(active);
-    }
-    addActiveLiElemment(elem.parentElement, parent);
-  }
-}
-
-function showToc() {
-  if (tocWrapper) {
-    postBody = document.querySelector('#post_body');
-    for (let i = 0; i < postBody.children.length; i++) {
-      if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-        hList.push(postBody.children[i]);
-      }
-    }
-    if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-    } else if (tocWrapper.classList.contains('no_compress')){
-      tocContent.classList.add('expanded');
-    } else {
-      if (hList.length > 10) {
-        active = 'active-hidden'
-        tocContent.classList.add('closed');
-      } else {
-        tocContent.classList.add('expanded');
-      }
-    }
-  }
-}
-
-(function() {
-  // 处理不是从#一级标题开始目录
-  if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-    let con = tocContent.children[0].children[0];
-    tocContent.innerHTML = con.innerHTML;
-  }
-  addTocNumber(tocContent, '');
-})();
-
-document.addEventListener('scroll', function(e) {
-  if (lList.length <= 0) {
-    return;
-  }
-  let scrollTop = document.scrollingElement.scrollTop + 10;
-  let dir;
-
-  if (lastTop - scrollTop > 0) {
-    dir = 'up';
-  } else {
-    dir = 'down';
-  }
-
-  lastTop = scrollTop;
-  if (scrollTop <= 0) {
-    if (lastIndex >= 0 && lastIndex < hList.length) {
-      lList[lastIndex].classList.remove(activeClass);
-    }
-    return;
-  }
-
-  let current = 0, hasFind = false;
-  for (let i = 0; i < hList.length; i++) {
-    if (hList[i].offsetTop > scrollTop) {
-      current = i;
-      hasFind = true;
-      break;
-    }
-  }
-  if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-    current = hList.length - 1;
-  } else {
-    current--;
-  }
-  if (dir === 'down') {
-    if (current > lastIndex) {
-      addActiveClass(current);
-      removeActiveClass(lastIndex) 
-      lastIndex = current;
-      removeParentActiveClass();
-      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
-    }
-  } else {
-    if (current < lastIndex) {
-      addActiveClass(current);
-      removeActiveClass(lastIndex);
-      lastIndex = current;
-      removeParentActiveClass();
-      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
-    }
-  }
-});
-
-window.addEventListener('load', function() {
-  showToc();
-  document.querySelector('#sidebar').style='display: block;';
-  tocWrapper.classList.add('toc-active');
-  setTimeout(function() {
-    if ("createEvent" in document) {
-      let evt = document.createEvent("HTMLEvents");
-      evt.initEvent("scroll", false, true);
-      document.dispatchEvent(evt);
-    }
-    else {
-      document.fireEvent("scroll");
-    }
-  }, 500)
-})
-
-</script>
-            </div>
           
         
       </div>
@@ -494,8 +308,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">
-      学习笔记    回文树
+    <a class="post-title-link" href="https://alan-sp.github.io/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/">
+      最大权闭合子图 学习笔记
     </a>
   </h1>
   <div class="post-meta">
@@ -503,7 +317,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-24</span>
+      <span>2020-08-16</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -512,14 +326,14 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/jN7p5rBs0/">
-              <span>字符串</span>
+            <a href="https://alan-sp.github.io/tag/t19xttxtL/">
+              <span>图论</span>
             </a>、
           
         
           
-            <a href="https://alan-sp.github.io/tag/5KwHqZ80p/">
-              <span>数据结构</span>
+            <a href="https://alan-sp.github.io/tag/5SpAgoLWT/">
+              <span>网络流</span>
             </a>
           
         
@@ -533,14 +347,14 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>414<span class="pc-show">字数</span></span>
+      <span>351<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/xue-xi-bi-ji-hui-wen-shu/" data-flag-title="学习笔记    回文树" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/" data-flag-title="最大权闭合子图 学习笔记" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -549,40 +363,29 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <!-- more -->
-<p>回文树，也叫回文自动机（PAM）。是OI中一种常用的自动机，用来处理子串回文并相互有联系的一类问题。</p>
+                <blockquote>
+<p>求给定有向图的最大权闭合子图的点权和。（其中闭合表示没有从子图向外的连边）</p>
+</blockquote>
 <!-- more -->
-<h2 id="1回文树的建立">1.回文树的建立</h2>
-<pre><code class="language-cpp">struct Tries{
-	int ch[27],fail,len,sum;
-} T[N];
-int siz,lastans,cur,cnt=1;
-char str[N];
-</code></pre>
-<p>回文树是建立在字典树Tries上的一种自动机，类似AC自动机，也需要有fail指针（至于它的具体含义见下）。</p>
-<p>而回文树的每个节点是一个子串，不再是一个字符。</p>
-<p>它的每条边代表一个字符，从上往下走表示在父亲的子串两端各加一个边上的字符。</p>
-<p>同时，回文树也有两个根，奇根和偶根。</p>
-<p>初始化（奇根=1，偶根=0）：</p>
-<pre><code class="language-cpp">T[1].len=-1,T[0].len=0;//1 为奇根，0为偶根
-	T[1].fail=0,T[0].fail=1;//相互指，方便跳，因为任何串都满足奇根
-	//至于奇根的fail是为了get_fail
-</code></pre>
-<p>原因：如果你写过马拉车<s>都学回文树了肯定会manacher啊qwq</s></p>
-<p>那么你肯定知道回文串分为奇数长度和偶数长度。</p>
-<p>这两种串区别很明显，而它们分别对应奇数和偶数。</p>
-<p>len存当前节点的长度，sum存个数。</p>
-<p>cur代表上一个建立（访问）的节点，这个也很重要。</p>
-<h2 id="2回文树的维护">2.回文树的维护</h2>
-<p>fail指针的含义：当前节点的最长回文后缀。（注意是回文后缀）</p>
-<pre><code class="language-cpp">inline int get_fail(int cur,int now)
-{
-	while(str[now-T[cur].len-1]!=str[now]) cur=T[cur].fail;
-	return cur;
-}
-</code></pre>
-<p>暴力跳就可以<s>我不知道有没有用并查集维护这个东西的（（</s>。</p>
-<p>咕咕咕咕qwq</p>
+<p>考虑使用最小割。</p>
+<p>将点权按正负分开，源点连正权点，汇点连负权点。</p>
+<p>边的容量为绝对值。</p>
+<p>把原图中的边容量设为正无穷。</p>
+<p>这样便建出了一张新图。</p>
+<hr>
+<p><strong>证明1：新图的最小割一定割在源点，汇点边</strong></p>
+<p>显然，中间的边权是INF。</p>
+<p>最小割=最大流=有限数值</p>
+<p><strong>证明2：任何一个闭合子图可以唯一映射到割在源汇的割（简单割）</strong></p>
+<p>易证，任何子图都对应一个割的S集合。</p>
+<p>充分性：由闭合性可知，闭合子图中不会有向外的连边。</p>
+<p>那么对应的割不会割在中间连边。</p>
+<p>必要性：简单割的S集合中，不会有向非汇点的边。</p>
+<p>即不存在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo><mi mathvariant="normal">∉</mi><mi>S</mi><mi mathvariant="normal">&amp;</mi><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo><mi mathvariant="normal">∉</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">(u,v)\notin S\&amp;(u,v)\notin T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mord"><span class="mrel">∈</span></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="llap"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord"><span class="mord">/</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">&amp;</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mord"><span class="mrel">∈</span></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="llap"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord"><span class="mord">/</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>。</p>
+<p>对应到原图中为闭合子图。</p>
+<p><strong>证明3：最大权闭合子图边点权和=$\sum_{v\in V^+} W(v)  - ~ $最小割</strong></p>
+<p>点权和=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mo>∑</mo><mrow><mi>v</mi><mo>∈</mo><msup><mi>V</mi><mo>+</mo></msup></mrow></msub><mi>W</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>+</mo><msub><mo>∑</mo><mrow><mi>v</mi><mo>∈</mo><msup><mi>V</mi><mo>−</mo></msup></mrow></msub><mi>W</mi><mo>(</mo><mi>v</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{v\in V^+} W(v)+\sum_{v\in V^-} W(v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.19215499999999996em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.19215499999999996em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span></p>
+<p>最小割=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mo>∑</mo><mrow><mi>v</mi><mo>∈</mo><msup><mi>V</mi><mo>+</mo></msup></mrow></msub><mi>W</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>+</mo><msub><mo>∑</mo><mrow><mi>v</mi><mo>∈</mo><msup><mi>V</mi><mo>−</mo></msup></mrow></msub><mo>−</mo><mi>W</mi><mo>(</mo><mi>v</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{v\in V^+} W(v)+\sum_{v\in V^-} -W(v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.19215499999999996em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.19215499999999996em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span></p>
 
               </div>
               <div class="post-footer">
@@ -593,7 +396,7 @@ char str[N];
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/" title="学习笔记    回文树">学习笔记    回文树</a>
+      <a href="https://alan-sp.github.io/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/" title="最大权闭合子图 学习笔记">最大权闭合子图 学习笔记</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -602,23 +405,19 @@ char str[N];
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/jN7p5rBs0/"># 字符串</a>
+      <a href="https://alan-sp.github.io/tag/t19xttxtL/"># 图论</a>
     
-      <a href="https://alan-sp.github.io/tag/5KwHqZ80p/"># 数据结构</a>
+      <a href="https://alan-sp.github.io/tag/5SpAgoLWT/"># 网络流</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">最长公共上升子序列（LCIS）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">题解 [POI2014]FAR-FarmCraft</a>
-        <a class="nav-mobile-next" title="题解 [POI2014]FAR-FarmCraft" href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">下一篇</a>
+        <a class="nav-pc-next" title="整体二分 学习笔记" href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">整体二分 学习笔记</a>
+        <a class="nav-mobile-next" title="整体二分 学习笔记" href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

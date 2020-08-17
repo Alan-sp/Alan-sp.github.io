@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-08-16T12:50:11.233Z</updated>
+    <updated>2020-08-17T11:10:10.809Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 08.17]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-0817/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-0817/">
+        </link>
+        <updated>2020-08-17T11:09:22.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[最大权闭合子图 学习笔记]]></title>
         <id>https://alan-sp.github.io/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/</id>
@@ -153,25 +160,6 @@
         <content type="html"><![CDATA[<h2 id="1概述">1.概述</h2>
 <p>折半搜索，又称meet in the middle，通常是把不能直接做的题目分成两半。</p>
 <p>把这两半分别搜索。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 题解 [ZJOI2010] 基站选址]]></title>
-        <id>https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/</id>
-        <link href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/">
-        </link>
-        <updated>2020-07-21T02:09:40.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="description"><strong>Description</strong></h3>
-<blockquote>
-<p>有 N 个村庄坐落在一条直线上，第 i(i&gt;1) 个村庄距离第 1个村庄的距离为 $$D_i$$。需要在这些村庄中建立不超过 <em>K</em>个通讯基站，在第 i个村庄建立基站的费用为 $$C_i$$。如果在距离第 i 个村庄不超过 $$S_i$$ 的范围内建立了一个通讯基站，那么就村庄被基站覆盖了。如果第 i 个村庄没有被覆盖，则需要向他们补偿，费用为 $$W_i$$。现在的问题是，选择基站的位置，使得总费用最小。</p>
-</blockquote>
-<hr>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="description"><strong>Description</strong></h3>
-<blockquote>
-<p>有 N 个村庄坐落在一条直线上，第 i(i&gt;1) 个村庄距离第 1个村庄的距离为 $$D_i$$。需要在这些村庄中建立不超过 <em>K</em>个通讯基站，在第 i个村庄建立基站的费用为 $$C_i$$。如果在距离第 i 个村庄不超过 $$S_i$$ 的范围内建立了一个通讯基站，那么就村庄被基站覆盖了。如果第 i 个村庄没有被覆盖，则需要向他们补偿，费用为 $$W_i$$。现在的问题是，选择基站的位置，使得总费用最小。</p>
-</blockquote>
-<hr>
 ]]></content>
     </entry>
 </feed>

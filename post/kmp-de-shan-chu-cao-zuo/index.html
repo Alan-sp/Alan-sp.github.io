@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>LIS&amp;LCS | AlanSP&#39;s  Blog</title>
+<title>KMP的删除操作 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600952908827">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="LIS&LCS" />
-    <meta name="keywords" content="动态规划" />
+    <meta name="description" content="KMP的删除操作" />
+    <meta name="keywords" content="字符串" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -227,11 +227,14 @@
               <div class="toc-box right-motion">
   <div class="toc-wrapper auto-number manual" id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#onlogn%E6%B1%82lislcs%E9%95%BF%E5%BA%A6"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</a><br>
-*
+<li>
 <ul>
-<li><a href="#1%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">1.二分查找</a></li>
-<li><a href="#2%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">2.树状数组</a></li>
+<li>
+<ul>
+<li><a href="#description"><strong>Description：</strong></a></li>
+<li><a href="#code"><strong>Code：</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -495,8 +498,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/lisandlcs/">
-      LIS&amp;LCS
+    <a class="post-title-link" href="https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/">
+      KMP的删除操作
     </a>
   </h1>
   <div class="post-meta">
@@ -504,7 +507,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-07-21</span>
+      <span>2020-09-24</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -513,8 +516,8 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
-              <span>动态规划</span>
+            <a href="https://alan-sp.github.io/tag/jN7p5rBs0/">
+              <span>字符串</span>
             </a>
           
         
@@ -528,14 +531,14 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>262<span class="pc-show">字数</span></span>
+      <span>382<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/lisandlcs/" data-flag-title="LIS&amp;LCS" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/kmp-de-shan-chu-cao-zuo/" data-flag-title="KMP的删除操作" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -544,35 +547,64 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <h1 id="onlogn求lislcs长度"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</h1>
-<p><s>你怎么连这个都不会qwq</s></p>
+                <h3 id="description"><strong>Description：</strong></h3>
+<blockquote>
+<p>在字符串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>中，重复删除同一个字串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>。直到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>不在是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>的字串为止</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>S</mi><mi mathvariant="normal">∣</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">|S|\le10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></p>
+</blockquote>
+<hr>
 <!-- more -->
-<h3 id="1二分查找">1.二分查找</h3>
-<p>在dp过程中维护单调栈d。</p>
-<p>其中d[i]表示长度为i的LIS的最优结尾元素。</p>
-<p>处理a[i]时，若它比结尾小，可以直接接上结尾元素a[len]。</p>
-<p>若大于结尾，则需在结尾之前插入。</p>
-<p>考虑维护的d具有单调性，采用二分。</p>
-<p>严格上升（下降）中，使用upper_bound。</p>
-<p>二分出第一个大于a[i]的数a[pos]。</p>
-<p>需要替换它。</p>
+<p>第一眼可能没什么思路，但我想到了开栈。</p>
+<p>最初的想法是开一个栈，把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>中的每个字符依次扔进去。</p>
+<p>再同时跑kmp，如果匹配上，就弹出长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>T</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|T|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span></span></span></span>的元素。</p>
+<p>栈中剩下的就是要保留的元素。</p>
+<p>但这个做法没过样例<s>还是很良心的qwq</s>。</p>
+<p>很显然，这样没法处理删除后产生的新串。</p>
+<p>所以我们开一个辅助数组<strong>pos</strong>，<strong>pos[i]表示S的第i位匹配到的T的长度。</strong></p>
+<p>举个例子：whatthemomooofun中第9位pos[9]=2，匹配了mo。</p>
+<p>这样我们每次在成功匹配退栈后可以让j跳向栈顶的pos，表示从栈顶继续匹配。</p>
+<p>这样就解决了连续的问题🌶<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。</p>
 <hr>
-<p><strong>正确性证明</strong>：</p>
-<p>因为二分出的pos为第一个比a[i]大的位置。</p>
-<p>所以a[pos]&gt;a[i]，可以发现，用a[i]替换a[pos]不会改变单调性。</p>
-<p>因为pos+1就比a[i]小了。</p>
-<p>并且a[i]显然作为lis的结尾要比a[pos]优。</p>
-<pre><code>len=1;
-for(int i=2;i&lt;=n;i++)
-	if(d[len]&gt;=a[i])d[++len]=a[i];
-	else {
-		int pos=upper_bound(d+1,d+1+len,a[i])-d;
-		d[pos]=a[i];
+<h3 id="code"><strong>Code：</strong></h3>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int N=1e6+9;
+char s1[N],s2[N];
+int stk[N],top,nxt[N],pos[N];
+int main()
+{
+	scanf(&quot;%s%s&quot;,s1+1,s2+1);
+	int len1=strlen(s1+1),len2=strlen(s2+1);
+	nxt[0]=-1,nxt[1]=0;
+	int j;
+	for(int i=2;i&lt;=len2;i++)
+	{
+		j=nxt[i-1];
+		while(~j&amp;&amp;s2[j+1]!=s2[i]) j=nxt[j];
+		nxt[i]=j+1;
 	}
+	j=0;
+	for(int i=1;i&lt;=len1;i++)
+	{
+		stk[++top]=i;
+		while(~j&amp;&amp;s2[j+1]!=s1[i]) j=nxt[j];
+		j++;
+		pos[i]=j;
+		if(j==len2)
+		{
+			int t=len2;
+			top-=t;
+			j=pos[stk[top]];
+			// printf(&quot;%d\n&quot;,j);
+		}
+	}
+	for(int i=1;i&lt;=top;i++) printf(&quot;%c&quot;,s1[stk[i]]);
+	return 0;
+}
 </code></pre>
-<hr>
-<h3 id="2树状数组">2.树状数组</h3>
-<p>过程中维护前缀最大值就好了。</p>
+<p>n</p>
 
               </div>
               <div class="post-footer">
@@ -583,7 +615,7 @@ for(int i=2;i&lt;=n;i++)
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/lisandlcs/" title="LIS&amp;LCS">LIS&amp;LCS</a>
+      <a href="https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/" title="KMP的删除操作">KMP的删除操作</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -592,21 +624,21 @@ for(int i=2;i&lt;=n;i++)
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
+      <a href="https://alan-sp.github.io/tag/jN7p5rBs0/"># 字符串</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">模拟赛 06.27</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">上一篇</a>
+        <a class="nav-pc-next" title="题解 CF662C 【Binary Table】" href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">题解 CF662C 【Binary Table】</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="题解 CF662C 【Binary Table】" href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">数位DP 学习笔记</a>
-        <a class="nav-mobile-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">下一篇</a>
+        <a class="nav-pc-next" title="Educational Codeforces Round 94 简要题解" href="https://alan-sp.github.io/post/educational-codeforces-round-94-jian-yao-ti-jie/">Educational Codeforces Round 94 简要题解</a>
+        <a class="nav-mobile-next" title="Educational Codeforces Round 94 简要题解" href="https://alan-sp.github.io/post/educational-codeforces-round-94-jian-yao-ti-jie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

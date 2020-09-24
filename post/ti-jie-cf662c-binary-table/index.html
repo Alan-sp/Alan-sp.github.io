@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>LIS&amp;LCS | AlanSP&#39;s  Blog</title>
+<title>题解 CF662C 【Binary Table】 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600952908827">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="LIS&LCS" />
-    <meta name="keywords" content="动态规划" />
+    <meta name="description" content="题解 CF662C 【Binary Table】" />
+    <meta name="keywords" content="FWT,题解" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -227,11 +227,15 @@
               <div class="toc-box right-motion">
   <div class="toc-wrapper auto-number manual" id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#onlogn%E6%B1%82lislcs%E9%95%BF%E5%BA%A6"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</a><br>
-*
+<li>
 <ul>
-<li><a href="#1%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">1.二分查找</a></li>
-<li><a href="#2%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">2.树状数组</a></li>
+<li>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -495,8 +499,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/lisandlcs/">
-      LIS&amp;LCS
+    <a class="post-title-link" href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">
+      题解 CF662C 【Binary Table】
     </a>
   </h1>
   <div class="post-meta">
@@ -504,7 +508,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-07-21</span>
+      <span>2020-09-24</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -513,8 +517,14 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
-              <span>动态规划</span>
+            <a href="https://alan-sp.github.io/tag/VIuRkqQDG/">
+              <span>FWT</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/BqmQeZXwL/">
+              <span>题解</span>
             </a>
           
         
@@ -523,19 +533,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>4分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>262<span class="pc-show">字数</span></span>
+      <span>608<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/lisandlcs/" data-flag-title="LIS&amp;LCS" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/ti-jie-cf662c-binary-table/" data-flag-title="题解 CF662C 【Binary Table】" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -544,35 +554,77 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <h1 id="onlogn求lislcs长度"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>求LIS&amp;LCS长度</h1>
-<p><s>你怎么连这个都不会qwq</s></p>
+                <h3 id="description">Description</h3>
+<blockquote>
+<p>有一个 n行 m 列的表格，每个元素都是 0/1 ，每次操作可以选择一行或一列，把 0/1翻转，即把 0换为 1，把 1换为 0。请问经过若干次操作后，表格中最少有多少个 1。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>≤</mo><mn>20</mn><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">n\le20,m\le 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
+</blockquote>
+<hr>
 <!-- more -->
-<h3 id="1二分查找">1.二分查找</h3>
-<p>在dp过程中维护单调栈d。</p>
-<p>其中d[i]表示长度为i的LIS的最优结尾元素。</p>
-<p>处理a[i]时，若它比结尾小，可以直接接上结尾元素a[len]。</p>
-<p>若大于结尾，则需在结尾之前插入。</p>
-<p>考虑维护的d具有单调性，采用二分。</p>
-<p>严格上升（下降）中，使用upper_bound。</p>
-<p>二分出第一个大于a[i]的数a[pos]。</p>
-<p>需要替换它。</p>
+<h3 id="solution">Solution</h3>
+<p>n很小，我们可以考虑状压n，表示第i列的状态。</p>
+<p>对于行的反转，我们也可以状压。</p>
+<p>用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">0/1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">/</span><span class="mord">1</span></span></span></span> 表示当前这一行反转或未反转。</p>
+<p><strong>对于一个状态为i的列，当反转情况为k时，它当前列的状态为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>⊕</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">i\oplus k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 。</strong></p>
+<p>可以用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><msub><mi>s</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">ans_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 记录当前反转状态为k的答案。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">f_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表是列状态为i的的行数。</p>
+<p>那么我们如何体现每一列的反转呢？</p>
+<p>注意到，对于一列的反转，它的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 变为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>  变为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</p>
+<p><strong>所以只要将列状态为i的0/1个数取min，便完成了列的反转。</strong></p>
+<p>记 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>g</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">g_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> 表示状态为j的0/1个数取min的结果。</p>
+<p>那么有</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><msub><mi>s</mi><mi>k</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>f</mi><mi>i</mi></msub><mo>×</mo><msub><mi>g</mi><mrow><mi>i</mi><mo>⊕</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">ans_k=\sum_if_i\times g_{i\oplus k}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.327674em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">⊕</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>令 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi><mo>=</mo><mi>i</mi><mo>⊕</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">j=i\oplus k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>，则有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>=</mo><mi>i</mi><mo>⊕</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">k=i\oplus j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>。</p>
+<p>所以：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><msub><mi>s</mi><mi>k</mi></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>⊕</mo><mi>j</mi><mo>=</mo><mi>k</mi></mrow></munder><msub><mi>f</mi><mi>i</mi></msub><mo>×</mo><msub><mi>g</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">ans_k=\sum_{i\oplus j=k}f_i\times g_j
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.488226em;vertical-align:-1.438221em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">⊕</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>这就是异或卷积了，直接FWT就好。</p>
 <hr>
-<p><strong>正确性证明</strong>：</p>
-<p>因为二分出的pos为第一个比a[i]大的位置。</p>
-<p>所以a[pos]&gt;a[i]，可以发现，用a[i]替换a[pos]不会改变单调性。</p>
-<p>因为pos+1就比a[i]小了。</p>
-<p>并且a[i]显然作为lis的结尾要比a[pos]优。</p>
-<pre><code>len=1;
-for(int i=2;i&lt;=n;i++)
-	if(d[len]&gt;=a[i])d[++len]=a[i];
-	else {
-		int pos=upper_bound(d+1,d+1+len,a[i])-d;
-		d[pos]=a[i];
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define int long long
+const int N=(1&lt;&lt;20)+9,M=1e5+9;
+int n,m,f[N],g[N],a[M],num[N];
+char s[M];
+
+inline void FWT(int *f,int flag)
+{
+	for(int mid=2,k=1;mid&lt;=n;mid&lt;&lt;=1,k&lt;&lt;=1)
+		for(int i=0;i&lt;n;i+=mid)
+			for(int j=0;j&lt;k;j++)
+				f[i+j]+=f[i+j+k],
+				f[i+j+k]=f[i+j]-f[i+j+k]-f[i+j+k],
+				f[i+j]/=flag,f[i+j+k]/=flag;
+}
+
+signed main()
+{
+	scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++)
+	{
+		scanf(&quot;%s&quot;,s+1);
+		for(int j=1;j&lt;=m;j++)
+			if(s[j]=='1') 
+				a[j]|=(1&lt;&lt;i-1);
 	}
+	for(int i=1;i&lt;=m;i++) f[a[i]]++;
+	for(int i=0;i&lt;(1&lt;&lt;n);i++) num[i]=num[i&gt;&gt;1]+(i&amp;1);
+	for(int i=0;i&lt;(1&lt;&lt;n);i++) g[i]=min(num[i],n-num[i]);//体现出对某一列的反转
+	n=(1&lt;&lt;n);
+	FWT(f,1),FWT(g,1); 
+	for(int i=0;i&lt;n;i++) f[i]*=g[i];
+	FWT(f,2);
+	int ans=1e15;
+	for(int i=0;i&lt;n;i++)
+		ans=min(ans,f[i]);
+	printf(&quot;%lld&quot;,ans);
+	return 0;
+}
 </code></pre>
-<hr>
-<h3 id="2树状数组">2.树状数组</h3>
-<p>过程中维护前缀最大值就好了。</p>
 
               </div>
               <div class="post-footer">
@@ -583,7 +635,7 @@ for(int i=2;i&lt;=n;i++)
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/lisandlcs/" title="LIS&amp;LCS">LIS&amp;LCS</a>
+      <a href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/" title="题解 CF662C 【Binary Table】">题解 CF662C 【Binary Table】</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -592,21 +644,19 @@ for(int i=2;i&lt;=n;i++)
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
+      <a href="https://alan-sp.github.io/tag/VIuRkqQDG/"># FWT</a>
+    
+      <a href="https://alan-sp.github.io/tag/BqmQeZXwL/"># 题解</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">模拟赛 06.27</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="模拟赛 06.27" href="https://alan-sp.github.io/post/mo-ni-sai-0627/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">数位DP 学习笔记</a>
-        <a class="nav-mobile-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">下一篇</a>
+        <a class="nav-pc-next" title="KMP的删除操作" href="https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/">KMP的删除操作</a>
+        <a class="nav-mobile-next" title="KMP的删除操作" href="https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

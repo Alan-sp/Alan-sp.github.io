@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="UTF-8"/>
+    <meta charset="UTF-8"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>AlanSP&#39;s  Blog</title>
+<title>Choice 题解 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1601348235150">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,7 +27,8 @@
 
 
 
-      <meta name="description" content="千夫诺诺，不如一士谔谔">
+    <meta name="description" content="Choice 题解" />
+    <meta name="keywords" content="思维,随笔" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -67,7 +68,7 @@
               
             </li>
           
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/archives" target="_self">
@@ -129,10 +130,25 @@
     </div>
     <div class="main-continer">
       
-      <div class="section-layout  gemini">
+      <div class="section-layout gemini ">
         <div class="section-layout-wrapper">
-          <div id="sidebarMeta" class="sidebar">
-    
+          
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://alan-sp.github.io/images/avatar.png"/>
@@ -205,388 +221,266 @@
   </div>
 
 </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
-      }
-    });
-  }
-  </script>
-          <div class="section-box box-shadow-wrapper">
-            <section class="section archives-section bg-color posts-expand">
-              
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
 
-<div class="bg-color">
-  <div class="archive-timeline-box">
-    <div class="archive-timeline-title">
-      
-        <h2>非常好！目前共计25篇日志，继续努力！</h2>
-      
-    </div>
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+          <div class="section-box box-shadow-wrapper">
+            <div class="section bg-color post post-page">
+              <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://alan-sp.github.io/post/choice-ti-jie/">
+      Choice 题解
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-09-29</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+      <span class="meta-item">
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://alan-sp.github.io/tag/jX0uF0qH7/">
+              <span>思维</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/ppyiCWnIR/">
+              <span>随笔</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>541<span class="pc-show">字数</span></span>
+    </span>
     
       
       
-        <div class="node-title">
-          <h2 class="tag-year">2020</h2>
-        </div>    
         
       
-      <a href="https://alan-sp.github.io/post/choice-ti-jie/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-29
-              <small>Choice 题解</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-24
-              <small>题解 CF662C 【Binary Table】</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              09-24
-              <small>KMP的删除操作</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/educational-codeforces-round-94-jian-yao-ti-jie/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              08-26
-              <small>Educational Codeforces Round 94 简要题解</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/mo-ni-sai-0817/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              08-17
-              <small>模拟赛 08.17</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              08-16
-              <small>最大权闭合子图 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              08-04
-              <small>整体二分 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/zjoi2014-li-jie-ti-bao-gao/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              08-02
-              <small>[ZJOI2014] 力 解题报告</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/wu-yuan-hui-shang-xia-jie-ke-xing-liu-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              08-01
-              <small>无源汇上下界可行流  学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/qia-te-lan-shu-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>卡特兰数 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-j/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>数论函数 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/ti-jie-cqoi2015-wang-luo-tun-tu-liang/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>题解 [CQOI2015] 网络吞吐量</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>组合数学 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>折半搜索   学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small> 题解 [ZJOI2010] 基站选址</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/mo-ni-sai-0627/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>模拟赛 06.27</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/lisandlcs/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-21
-              <small>LIS&amp;LCS</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-16
-              <small>数位DP 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/ti-jie-pta-little-bird/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              05-03
-              <small>题解 PTA-Little Bird</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              04-11
-              <small>最长公共上升子序列（LCIS）</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              03-24
-              <small>学习笔记    回文树</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/ti-jie-poi2014far-farmcraft/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              03-19
-              <small>题解 [POI2014]FAR-FarmCraft</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/kuo-zhan-zhong-guo-sheng-yu-ding-li-xue-xi-bi-ji/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              03-19
-              <small>扩展中国剩余定理 学习笔记</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://alan-sp.github.io/post/da-wu/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              03-17
-              <small>平衡树全家桶</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-        <div class="node-title">
-          <h2 class="tag-year">2018</h2>
-        </div>    
-        
-      
-      <a href="https://alan-sp.github.io/post/hello-gridea/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-12
-              <small>Hello Gridea</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+      <span id="/post/choice-ti-jie/" data-flag-title="Choice 题解" class="meta-item pc-show leancloud_visitors">
+        <span class="post-meta-divider">|</span>
+        <i class="fa fa-eye"></i>
+        <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
+      </span>
     
   </div>
-  
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/archives/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
-  </ul>
-</div>
-</div>
+</header>
+              <div class="post-body next-md-body" id="post_body">
+                <p>我们依次考虑两个操作怎么实现。</p>
+<p>不难发现，对于一个确定的‘+’‘-’序列，需要更改的次数是一定的。</p>
+<p>那么我们现在只有交换一个操作，满足非负一个限制。</p>
+<p>对于交换操作，我们可以倍长序列，枚举从哪里开始交换。</p>
+<p>相当于是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>q</mi></mrow><annotation encoding="application/x-tex">2q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 序列上的长为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 的区间。</p>
+<p>将这个区间到末尾所有的位置提到前面去。</p>
+<hr>
+<p>那么如何判断是否合法呢，要利用前缀和。</p>
+<p>如果前缀和最小的位置的答案非负，那么一定合法。</p>
+<p>反之，我们就要进行一定的‘1’操作，使其非负。</p>
+<p>找到固定区间长度的最小值，使用单调队列。</p>
+<p><strong>注意：在修改序列的值后，仍要满足最后的值等于m的条件。</strong></p>
+<hr>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int N=1e6+9;
+int q,n,m,v1,v2,ans=0x7f7f7f7f,cnt;
+char ch[N];
+int a[N*2],Q[N*2],hh,tt,sum[N*2];
+bool flag=true;
+int main()
+{
+	// freopen(&quot;choice.in&quot;,&quot;r&quot;,stdin);
+	// freopen(&quot;choice.out&quot;,&quot;w&quot;,stdout); 
+	scanf(&quot;%d%d%d%d%d&quot;,&amp;q,&amp;n,&amp;m,&amp;v1,&amp;v2);
+	scanf(&quot;%s&quot;,ch+1);
+	for(int i=1;i&lt;=q;i++)
+	{
+		if(ch[i]=='+') a[i]=a[i+q]=1;
+		else a[i]=a[i+q]=-1;
+	}
+	for(int i=1;i&lt;=q*2;i++) 
+		sum[i]=sum[i-1]+a[i];
+	for(int i=1;i&lt;=q;i++)
+	{	
+		while(hh&lt;=tt&amp;&amp;sum[Q[tt]]&gt;=sum[i]) --tt;
+		Q[++tt]=i;//先找到原序列的最小值，备用
+	}
+	for(int i=q;i&lt;=q*2;i++)
+	{
+		while(hh&lt;=tt&amp;&amp;i-Q[hh]&gt;=q) ++hh;
+		while(hh&lt;=tt&amp;&amp;sum[Q[tt]]&gt;=sum[i]) --tt;
+		Q[++tt]=i;
+		int now=n+sum[Q[hh]]-sum[i-q];//now表示此时能到达的最小值
+		int val=0,p=n+sum[i]-sum[i-q];//p是没有操作完成后的值
+		if(now&lt;0)
+		{//上取整
+			val=(-now+1)/2*v1;
+			p+=(-now+1)/2*2;//更改了一些数，对p也有影响
+		}
+		int tmp=val+abs(p-m)/2*v1;//最后答案修正为m的代价
+		if(i!=q) tmp+=v2*(2*q-i);//把i以后的数全部提前的代价
+		ans=min(ans,tmp);
+	}
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+}
+</code></pre>
 
-            </section>
+              </div>
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      AlanSP&#39;s  Blog
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://alan-sp.github.io/post/choice-ti-jie/" title="Choice 题解">Choice 题解</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://alan-sp.github.io/tag/jX0uF0qH7/"># 思维</a>
+    
+      <a href="https://alan-sp.github.io/tag/ppyiCWnIR/"># 随笔</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="题解 CF662C 【Binary Table】" href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">题解 CF662C 【Binary Table】</a>
+        <a class="nav-mobile-next" title="题解 CF662C 【Binary Table】" href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+              
+                
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+<script>
+new Valine({
+    el: '#vcomments' ,
+    appId: '',
+    appKey: '',
+    notify: 'true' === 'true', 
+    avatar:'retro', 
+    placeholder: '写下您的评论qwq',
+    pageSize: '',
+    lang: 'zh-cn',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'true',
+});
+</script>
+              
+            </div>
           </div>
         </div>
       </div>

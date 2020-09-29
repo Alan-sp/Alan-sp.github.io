@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-09-24T13:08:46.307Z</updated>
+    <updated>2020-09-29T02:57:34.581Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Choice 题解]]></title>
+        <id>https://alan-sp.github.io/post/choice-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/choice-ti-jie/">
+        </link>
+        <updated>2020-09-29T02:55:24.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 CF662C 【Binary Table】]]></title>
         <id>https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/</id>
@@ -155,17 +162,6 @@
 <p>存在递推式：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>i</mi><mi>n</mi></mfrac><mo fence="true">)</mo></mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mrow><mi>n</mi><mo>−</mo><mi>i</mi><mo>−</mo><mn>1</mn></mrow><mi>n</mi></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(n)=\sum_{i=0}^{n-1}\binom i n\binom {n-i-1} n
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0787820000000004em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011130000000004em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3365199999999997em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault">n</span></span><span style="top:-3.6769999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault">i</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.33652em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault">n</span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[数论函数 学习笔记]]></title>
-        <id>https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-j/</id>
-        <link href="https://alan-sp.github.io/post/shu-lun-han-shu-xue-xi-bi-j/">
-        </link>
-        <updated>2020-07-21T02:22:37.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>数论函数&amp;&amp;莫比乌斯反演&amp;&amp;杜教筛</strong></p>
-]]></summary>
-        <content type="html"><![CDATA[<p><strong>数论函数&amp;&amp;莫比乌斯反演&amp;&amp;杜教筛</strong></p>
 ]]></content>
     </entry>
 </feed>

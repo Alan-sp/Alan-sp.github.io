@@ -1904,11 +1904,11 @@ body {
         margin: 0 auto;
       }
     @font-face {
-      font-family: 'shoujin.ttf';
-      src: url('/media/fonts/shoujin.ttf.ttf');
+      font-family: 'shoujin';
+      src: url('/media/fonts/shoujin.ttf');
     }
     * {
-        font-family: 'shoujin.ttf';
+        font-family: 'shoujin';
     }body {
       color: #343a40;
     }

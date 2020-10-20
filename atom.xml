@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-10-14T12:56:09.613Z</updated>
+    <updated>2020-10-20T13:51:35.004Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 6 题解  ]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-6-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-6-ti-jie/">
+        </link>
+        <updated>2020-10-20T13:02:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>模拟+贪心+BIT+结论+套路</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>模拟+贪心+BIT+结论+套路</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[决策单调性 学习笔记]]></title>
         <id>https://alan-sp.github.io/post/jue-ce-dan-diao-xing-xue-xi-bi-ji/</id>
@@ -124,25 +135,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<blockquote>
 <p>求给定有向图的最大权闭合子图的点权和。（其中闭合表示没有从子图向外的连边）</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[整体二分 学习笔记]]></title>
-        <id>https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/</id>
-        <link href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">
-        </link>
-        <updated>2020-08-04T00:31:01.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="0引述">0.引述</h3>
-<p>来看这样一道题：</p>
-<blockquote>
-<p>多次询问，查询静态区间k小，<strong>可离线</strong>。</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="0引述">0.引述</h3>
-<p>来看这样一道题：</p>
-<blockquote>
-<p>多次询问，查询静态区间k小，<strong>可离线</strong>。</p>
 </blockquote>
 ]]></content>
     </entry>

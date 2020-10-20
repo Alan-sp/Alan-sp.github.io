@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>最长公共上升子序列（LCIS） | AlanSP&#39;s  Blog</title>
+<title>模拟赛 6 题解   | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603199041262">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="最长公共上升子序列（LCIS）" />
-    <meta name="keywords" content="动态规划" />
+    <meta name="description" content="模拟赛 6 题解  " />
+    <meta name="keywords" content="贪心,随笔,数据结构" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -231,8 +231,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#description">Description</a></li>
-<li><a href="#solution">Solution</a></li>
+<li><a href="#a-%E8%B4%AA%E5%90%83%E8%9B%87">A . 贪吃蛇</a></li>
+<li><a href="#b-%E5%88%86%E7%B3%96%E6%9E%9C">B. 分糖果</a></li>
+<li><a href="#c-%E6%8E%92%E5%BA%8F">C. 排序</a></li>
 </ul>
 </li>
 </ul>
@@ -498,8 +499,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">
-      最长公共上升子序列（LCIS）
+    <a class="post-title-link" href="https://alan-sp.github.io/post/mo-ni-sai-6-ti-jie/">
+      模拟赛 6 题解  
     </a>
   </h1>
   <div class="post-meta">
@@ -507,7 +508,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-04-11</span>
+      <span>2020-10-20</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -516,8 +517,20 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
-              <span>动态规划</span>
+            <a href="https://alan-sp.github.io/tag/tekkrRQCj/">
+              <span>贪心</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/ppyiCWnIR/">
+              <span>随笔</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/5KwHqZ80p/">
+              <span>数据结构</span>
             </a>
           
         
@@ -526,19 +539,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>459<span class="pc-show">字数</span></span>
+      <span>597<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/" data-flag-title="最长公共上升子序列（LCIS）" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/mo-ni-sai-6-ti-jie/" data-flag-title="模拟赛 6 题解  " class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -547,36 +560,38 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <h3 id="description">Description</h3>
-<p>熊大妈的奶牛在小沐沐的熏陶下开始研究信息题目。</p>
-<p>小沐沐先让奶牛研究了最长上升子序列，再让他们研究了最长公共子序列，现在又让他们研究最长公共上升子序列了。</p>
-<p>小沐沐说，对于两个数列A和B，如果它们都包含一段位置不一定连续的数，且数值是严格递增的，那么称这一段数是两个数列的公共上升子序列，而所有的公共上升子序列中最长的就是最长公共上升子序列了。</p>
-<p>奶牛半懂不懂，小沐沐要你来告诉奶牛什么是最长公共上升子序列。</p>
-<p>不过，只要告诉奶牛它的长度就可以了。</p>
-<p>数列A和B的长度均不超过3000。</p>
-<p>1≤N≤3000,序列中的数字均不超过int</p>
+                <p>模拟+贪心+BIT+结论+套路</p>
 <!-- more -->
+<h3 id="a-贪吃蛇">A . 贪吃蛇</h3>
+<p>傻逼模拟，运用stl的队列和set判重。</p>
+<p>去掉尾巴的时候记得在set里面erase就好了。</p>
+<h3 id="b-分糖果">B. 分糖果</h3>
+<p>原题 P2123 皇后游戏。</p>
+<p>钦定的大小关系：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>min</mi><mo>⁡</mo><mo>(</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo>)</mo><mo>&lt;</mo><mi>min</mi><mo>⁡</mo><mo>(</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>min</mi><mo>⁡</mo><mo>(</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo>)</mo><mi mathvariant="normal">≠</mi><mi>min</mi><mo>⁡</mo><mo>(</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>&lt;</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>a</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>min</mi><mo>⁡</mo><mo>(</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo>)</mo><mo>=</mo><mi>min</mi><mo>⁡</mo><mo>(</mo><mi>x</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>)</mo></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+\min(x.a,y.b)&lt;\min(x.b,y.a)&amp;\min(x.a,y.b)\neq\min(x.b,y.a) 	\\
+x.a&lt;y.a&amp;\min(x.a,y.b)=\min(x.b,y.a)
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>第一个证明邻项交换法就好了，推式子。</p>
+<p>第二个太神仙至今不会，考虑 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 会对以后影响更多，贪心就好了。</p>
+<h3 id="c-排序">C. 排序</h3>
+<p>我们可以发现这样的一个性质：在一次操作后，每个元素和它后面产生的逆序对被消除。</p>
+<p>因为它回到了相对正确的位置上。</p>
+<p>所以单次操作后修改的元素就不用再考虑了，可以删除掉。</p>
+<p>每个数只会被删一次。</p>
+<p>那么有个naive的想法就是用链表每次暴力跳+删除。</p>
+<p>随机数据下表现优秀，但还是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nm)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span> 的。</p>
+<p>考虑优化这个删除的过程，我们如何避免访问被删除的数。</p>
+<p>正解给出了在线段树上二分位置，这样删除是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的。</p>
 <hr>
-<h3 id="solution">Solution</h3>
-<p>LIS和LCS的求法不再赘述，关键在于如何结合</p>
-<p>扫描1~j-1，如果当前位置b数组的值大于a[i]，证明可以拼接</p>
-<p>方程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><msub><mi>max</mi><mo>⁡</mo><mrow><mn>1</mn><mo>=</mo><mo>&lt;</mo><mi>k</mi><mo>&lt;</mo><mi>j</mi></mrow></msub><mo>(</mo><mi>f</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo><mo>+</mo><mn>1</mn><mo>)</mo><mo>(</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>&gt;</mo><mi>b</mi><mo>[</mo><mi>k</mi><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[i][j]=\max_{1=&lt;k&lt;j}(f[i-1][j],f[i-1][k]+1)(a[i]&gt;b[k])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">=</span><span class="mrel mtight">&lt;</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">&lt;</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span></p>
-<p>可以转移到最大值</p>
-<p>最后再用最大值转移，复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
-<p>瓶颈在于每次转移都要枚举1到j-1</p>
-<p>我们可以记录前缀最大值，在每次处理时即可更新</p>
-<p>核心代码</p>
-<pre><code class="language-cpp">for(int i=1;i&lt;=n;i++)
-    {
-        maxn=1;
-        for(int j=1;j&lt;=n;j++)
-        {
-            f[i][j]=f[i-1][j];
-            if(a[i]==b[j]) f[i][j]=max(f[i][j],maxn);
-            if(a[i]&gt;b[j]) maxn=max(maxn,f[i-1][j]+1);
-        }
-    }
-</code></pre>
+<p>神仙wyx给出了另外一种解法：离线树状数组。</p>
+<p>我们可以把询问离线下来，搞一棵权值树状数组，其中下标是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>，权值是询问的时间。</p>
+<p>对于每一个询问位置，我们维护它最早在什么时间询问的。（这之后这个点就没有作用了）</p>
+<p>在处理时，我们枚举 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>:</mo><mn>1</mn><mo>→</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">i:1\rightarrow n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，依次处理每个元素的贡献。</p>
+<p><strong>一个元素的贡献，一定算在了在它前面，比它大，且第一个出现的元素上面。</strong></p>
+<p>这个可以用反向树状数组轻松维护，而我们从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 保证了询问在它前面。</p>
+<p>查询到某个点时，就把这个点的询问加进去就好了，对前面没有影响。</p>
 
               </div>
               <div class="post-footer">
@@ -587,7 +602,7 @@ window.addEventListener('load', function() {
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/" title="最长公共上升子序列（LCIS）">最长公共上升子序列（LCIS）</a>
+      <a href="https://alan-sp.github.io/post/mo-ni-sai-6-ti-jie/" title="模拟赛 6 题解  ">模拟赛 6 题解  </a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -596,21 +611,21 @@ window.addEventListener('load', function() {
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
+      <a href="https://alan-sp.github.io/tag/tekkrRQCj/"># 贪心</a>
+    
+      <a href="https://alan-sp.github.io/tag/ppyiCWnIR/"># 随笔</a>
+    
+      <a href="https://alan-sp.github.io/tag/5KwHqZ80p/"># 数据结构</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="题解 PTA-Little Bird" href="https://alan-sp.github.io/post/ti-jie-pta-little-bird/">题解 PTA-Little Bird</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="题解 PTA-Little Bird" href="https://alan-sp.github.io/post/ti-jie-pta-little-bird/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="学习笔记    回文树" href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">学习笔记    回文树</a>
-        <a class="nav-mobile-next" title="学习笔记    回文树" href="https://alan-sp.github.io/post/xue-xi-bi-ji-hui-wen-shu/">下一篇</a>
+        <a class="nav-pc-next" title="决策单调性 学习笔记" href="https://alan-sp.github.io/post/jue-ce-dan-diao-xing-xue-xi-bi-ji/">决策单调性 学习笔记</a>
+        <a class="nav-mobile-next" title="决策单调性 学习笔记" href="https://alan-sp.github.io/post/jue-ce-dan-diao-xing-xue-xi-bi-ji/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

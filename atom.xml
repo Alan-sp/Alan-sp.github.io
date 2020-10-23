@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-10-22T06:58:40.561Z</updated>
+    <updated>2020-10-23T11:56:01.564Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Atcoder Grand Contest 048 题解]]></title>
+        <id>https://alan-sp.github.io/post/atcoder-grand-contest-048-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/atcoder-grand-contest-048-ti-jie/">
+        </link>
+        <updated>2020-10-23T09:43:16.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[模拟赛5 题解]]></title>
         <id>https://alan-sp.github.io/post/mo-ni-sai-5-ti-jie/</id>
@@ -128,12 +135,5 @@
         <link href="https://alan-sp.github.io/post/educational-codeforces-round-94-jian-yao-ti-jie/">
         </link>
         <updated>2020-08-26T03:08:41.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 08.17]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-0817/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-0817/">
-        </link>
-        <updated>2020-08-17T11:09:22.000Z</updated>
     </entry>
 </feed>

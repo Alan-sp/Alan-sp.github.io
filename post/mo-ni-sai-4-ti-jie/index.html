@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>整体二分 学习笔记 | AlanSP&#39;s  Blog</title>
+<title>模拟赛 4 题解 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603456454898">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="整体二分 学习笔记" />
-    <meta name="keywords" content="整体二分" />
+    <meta name="description" content="模拟赛 4 题解" />
+    <meta name="keywords" content="模拟,博弈论,状压,随笔,动态规划" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -231,9 +231,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#0%E5%BC%95%E8%BF%B0">0.引述</a></li>
-<li><a href="#1%E5%BC%95%E8%BF%B0">1.引述</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a></li>
+<li><a href="#a-%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BD%8D%E8%BF%90%E7%AE%97">A. 神奇的位运算</a></li>
+<li><a href="#b%E7%BB%88%E7%84%89%E4%B9%8B%E6%95%B0%E5%88%97">B.终焉之数列</a></li>
+<li><a href="#c%E4%B8%8B%E6%A3%8B">C.下棋</a></li>
+<li><a href="#d%E9%AD%94%E6%96%B9">D.魔方</a>
+<ul>
+<li><a href="#%E5%9E%83%E5%9C%BE%E6%A8%A1%E6%8B%9F%E6%AF%81%E6%88%91%E9%9D%92%E6%98%A5">垃圾模拟，毁我青春。</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -499,8 +504,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/">
-      整体二分 学习笔记
+    <a class="post-title-link" href="https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/">
+      模拟赛 4 题解
     </a>
   </h1>
   <div class="post-meta">
@@ -508,7 +513,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-08-04</span>
+      <span>2020-10-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -517,8 +522,32 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/36Nnsld8e/">
-              <span>整体二分</span>
+            <a href="https://alan-sp.github.io/tag/I3yurGkrS/">
+              <span>模拟</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/XRgLXrEI0L/">
+              <span>博弈论</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/giNGODJDRD/">
+              <span>状压</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/ppyiCWnIR/">
+              <span>随笔</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
+              <span>动态规划</span>
             </a>
           
         
@@ -527,19 +556,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>7分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1282<span class="pc-show">字数</span></span>
+      <span>314<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/zheng-ti-er-fen-xue-xi-bi-ji/" data-flag-title="整体二分 学习笔记" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/mo-ni-sai-4-ti-jie/" data-flag-title="模拟赛 4 题解" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -548,144 +577,24 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <h3 id="0引述">0.引述</h3>
-<p>来看这样一道题：</p>
-<blockquote>
-<p>多次询问，查询静态区间k小，<strong>可离线</strong>。</p>
-</blockquote>
+                <p>思维+状压dp+博弈论+数学+模拟</p>
 <!-- more -->
-<p>相信很多人都想到了主席树，但我们发现题中可以离线，所以我们有了一种常数小，debug方便，码量小的方法:</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="2.488em"><mtext>整体二分</mtext></mstyle></mrow><annotation encoding="application/x-tex">\Huge\text{整体二分}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7001250399999999em;vertical-align:0em;"></span><span class="mord text sizing reset-size6 size11"><span class="mord cjk_fallback">整体二分</span></span></span></span></span>。</p>
-<hr>
-<h3 id="1引述">1.引述</h3>
-<p>整体二分，是指将询问，修改等操作一起二分，基于值域。</p>
-<p>传入的时候传四个参数：l,r,L,R。</p>
-<p>表示值域在l到r内，操作在L到R内的操作答案。</p>
-<p>处理的时候把操作分治，分到左右区间里。</p>
-<p>同时，要使用树状数组，对左区间操作。</p>
-<p>往下分治时，记住要撤销上次操作的影响，即清空树状数组。</p>
-<p>整体二分还是很套路的，唯一不同的是树状数组中维护的内容。</p>
-<pre><code class="language-cpp">inline void solve(int l,int r,int L,int R)
-{
-	if(L&gt;R) return;//防越界
-	if(l==r)
-	{
-		for(int i=L;i&lt;=R;i++) if(q[i].op==2) ans[q[i].id]=l;
-		//当区间缩小为1时，表示[L,R]内的查询答案都是当前的数，直接赋值就好
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1,cnt1=0,cnt2=0;
-	for(int i=L;i&lt;=R;i++)
-	{
-		if(q[i].op==1)
-		{
-			//修改操作，若当前的数小于左边界的最大值，则统计左区间个数时可以算上
-			if(q[i].l&lt;=mid) q1[++cnt1]=q[i],add(q[i].id,q[i].r);
-			else q2[++cnt2]=q[i];
-		}
-		else
-		{
-			//查询操作，如果查询的k大于左区间的个数，就分到右边
-			int tmp=ask(q[i].r)-ask(q[i].l-1);//左区间个数
-			if(q[i].k&lt;=tmp) q1[++cnt1]=q[i];
-			else q[i].k-=tmp,q2[++cnt2]=q[i];
-		}
-	}
-	for(int i=1;i&lt;=cnt1;i++) if(q1[i].op==1) add(q1[i].id,-q1[i].r);//撤销操作
-	for(int i=1;i&lt;=cnt1;i++) q[L+i-1]=q1[i];//分治下去操作
-	for(int i=1;i&lt;=cnt2;i++) q[L+cnt1+i-1]=q2[i];
-	solve(l,mid,L,L+cnt1-1);
-	solve(mid+1,r,L+cnt1,R);
-}
-</code></pre>
-<hr>
-<h3 id="2例题">2.例题</h3>
-<p>重要的还是例题~~。</p>
-<ul>
-<li><strong><a href="https://www.luogu.com.cn/problem/P1533">P1533 可怜的狗狗</a></strong></li>
-</ul>
-<p>模板题，树状数组为值域树状数组，查询可以直接仿照主席树的做法。</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;algorithm&gt;
-const int N=2e5+9,INF=0x3f3f3f3f;
-#define lowbit(x) (x&amp;-x)
-struct Query
-{
-	int l,r,k,id,op;
-} q[N*3],q1[N*3],q2[N*3];
-int n,m,a[N],cnt,cntq,ans[N],tr[N];
-char op[2];
-inline void add(int x,int c){while(x&lt;=n){tr[x]+=c,x+=lowbit(x);}}
-inline int ask(int x){int res=0;while(x){res+=tr[x],x-=lowbit(x);}return res;}
-
-inline void solve(int l,int r,int L,int R)
-{
-	if(L&gt;R) return;//防越界
-	if(l==r)
-	{
-		for(int i=L;i&lt;=R;i++) if(q[i].op==2) ans[q[i].id]=l;
-		//当区间缩小为1时，表示[L,R]内的查询答案都是当前的数，直接赋值就好
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1,cnt1=0,cnt2=0;
-	for(int i=L;i&lt;=R;i++)
-	{
-		if(q[i].op==1)
-		{
-			//修改操作，若当前的数小于左边界的最大值，则统计左区间个数时可以算上
-			if(q[i].l&lt;=mid) q1[++cnt1]=q[i],add(q[i].id,q[i].r);
-			else q2[++cnt2]=q[i];
-		}
-		else
-		{
-			//查询操作，如果查询的k大于左区间的个数，就分到右边
-			int tmp=ask(q[i].r)-ask(q[i].l-1);//左区间个数
-			if(q[i].k&lt;=tmp) q1[++cnt1]=q[i];
-			else q[i].k-=tmp,q2[++cnt2]=q[i];
-		}
-	}
-	for(int i=1;i&lt;=cnt1;i++) if(q1[i].op==1) add(q1[i].id,-q1[i].r);//撤销操作
-	for(int i=1;i&lt;=cnt1;i++) q[L+i-1]=q1[i];//分治下去操作
-	for(int i=1;i&lt;=cnt2;i++) q[L+cnt1+i-1]=q2[i];
-	solve(l,mid,L,L+cnt1-1);
-	solve(mid+1,r,L+cnt1,R);
-}
-
-int main()
-{
-	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);//初始序列视为修改
-	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]),q[++cnt]=(Query){a[i],1,0,i,1};
-	for(int i=1;i&lt;=m;i++)
-	{
-		int l,r,k;
-		scanf(&quot;%s&quot;,op);
-		scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
-		if(op[0]=='Q')
-			scanf(&quot;%d&quot;,&amp;k),q[++cnt]=(Query){l,r,k,++cntq,2};
-		else q[++cnt]=(Query){a[l],-1,0,l,1},q[++cnt]=(Query){r,1,0,l,1},a[l]=r;
-	}
-	solve(-INF,INF,1,cnt);
-	for(int i=1;i&lt;=cntq;i++) printf(&quot;%d\n&quot;,ans[i]);
-	return 0;
-}
-</code></pre>
-<hr>
-<ul>
-<li><a href="https://www.luogu.com.cn/problem/P3527">P3527 [POI2011]MET-Meteors</a></li>
-</ul>
-<p>这题就比较经典了。</p>
-<p>操作为区间加，单点查到达某个值的时间。</p>
-<p>这时候我们就要把区间加和单点查进行整体二分。</p>
-<p>开始时，先把[l,mid]的区间加进行实现。</p>
-<p>在查询时，如果当前国家的封地能量总合已经大于期望，那么证明达到满足它的期望的时间一定在[l,mid]的区间加内。</p>
-<p>反正，则在右区间。</p>
-<p>记得要保存每个国家的封地有哪些，可以用vector或者邻接表。</p>
-<p>还注意破环成链，查询时记住把v和v+i的答案都算上。</p>
-<p>记得撤销操作。</p>
-<p><strong>Warning：邻接表的表头要和查询打包到一个结构体里，否则在操作下放的时候无法把表头h传递下去，即q[i]=q1[...]时要传递表头。</strong></p>
-<p>代码我就放在这里🌶：</p>
-<p><a href="https://www.luogu.com.cn/paste/jhe625l5"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="2.074em"><mtext>Code</mtext></mstyle></mrow><annotation encoding="application/x-tex">\huge\text{Code}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4402685599999998em;vertical-align:0em;"></span><span class="mord text sizing reset-size6 size10"><span class="mord">Code</span></span></span></span></span></a></p>
+<h3 id="a-神奇的位运算">A. 神奇的位运算</h3>
+<p>我们要是判断符号的话，只需要存在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">，</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">1，1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord cjk_fallback">，</span><span class="mord">1</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span>。</p>
+<p>稍微思考一下，答案只可能是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>，答案的不同取值只取决于每一位。</p>
+<p>我们把每一位分开考虑，那么答案就是需求最多的位/</p>
+<h3 id="b终焉之数列">B.终焉之数列</h3>
+<h3 id="c下棋">C.下棋</h3>
+<p>首先我们可以考虑 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 函数的求法，即一个棋盘能够转移到哪些状态。</p>
+<p>设当前棋盘长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，如果在边界放一个棋子，会转移到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>。</p>
+<p>而如果在中间的位置放棋子，那么会分裂成两个小棋盘 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 和  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi>j</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n-j-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>，当前状态的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 即为这两个小棋盘的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">xor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>。</p>
+<p>根据 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 定理，长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的棋盘的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 是所有后继状态的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>e</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">mex</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span></span></span></span>。</p>
+<p>这样我们可以求出任意长度棋盘的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 函数了。</p>
+<p>打表发现，除第一个周期略有变化，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 只总是以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>68</mn></mrow><annotation encoding="application/x-tex">68</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">8</span></span></span></span> 为周期。</p>
+<p>那么就可以特判+打表+ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">sg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span></span></span></span> 定理异或过掉此题。</p>
+<h3 id="d魔方">D.魔方</h3>
+<h4 id="垃圾模拟毁我青春">垃圾模拟，毁我青春。</h4>
+<p>直接模拟就好，注意对齐和侧面旋转。</p>
 
               </div>
               <div class="post-footer">
@@ -696,7 +605,7 @@ int main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/zheng-ti-er-fen-xue-xi-bi-ji/" title="整体二分 学习笔记">整体二分 学习笔记</a>
+      <a href="https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/" title="模拟赛 4 题解">模拟赛 4 题解</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -705,21 +614,25 @@ int main()
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/36Nnsld8e/"># 整体二分</a>
+      <a href="https://alan-sp.github.io/tag/I3yurGkrS/"># 模拟</a>
+    
+      <a href="https://alan-sp.github.io/tag/XRgLXrEI0L/"># 博弈论</a>
+    
+      <a href="https://alan-sp.github.io/tag/giNGODJDRD/"># 状压</a>
+    
+      <a href="https://alan-sp.github.io/tag/ppyiCWnIR/"># 随笔</a>
+    
+      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="最大权闭合子图 学习笔记" href="https://alan-sp.github.io/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/">最大权闭合子图 学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="最大权闭合子图 学习笔记" href="https://alan-sp.github.io/post/zui-da-quan-bi-he-zi-tu-xue-xi-bi-ji/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[ZJOI2014] 力 解题报告" href="https://alan-sp.github.io/post/zjoi2014-li-jie-ti-bao-gao/">[ZJOI2014] 力 解题报告</a>
-        <a class="nav-mobile-next" title="[ZJOI2014] 力 解题报告" href="https://alan-sp.github.io/post/zjoi2014-li-jie-ti-bao-gao/">下一篇</a>
+        <a class="nav-pc-next" title="Atcoder Grand Contest 048 题解" href="https://alan-sp.github.io/post/atcoder-grand-contest-048-ti-jie/">Atcoder Grand Contest 048 题解</a>
+        <a class="nav-mobile-next" title="Atcoder Grand Contest 048 题解" href="https://alan-sp.github.io/post/atcoder-grand-contest-048-ti-jie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

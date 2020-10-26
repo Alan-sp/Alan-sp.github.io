@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>折半搜索   学习笔记 | AlanSP&#39;s  Blog</title>
+<title>模拟赛 8 题解 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603719702356">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="折半搜索   学习笔记" />
-    <meta name="keywords" content="搜索" />
+    <meta name="description" content="模拟赛 8 题解" />
+    <meta name="keywords" content="哈希,矩乘,动态规划" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -229,10 +229,11 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1%E6%A6%82%E8%BF%B0">1.概述</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a>
+<li>
 <ul>
-<li><a href="#p4799-ceoi2015-day2%E4%B8%96%E7%95%8C%E5%86%B0%E7%90%83%E9%94%A6%E6%A0%87%E8%B5%9B">P4799 [CEOI2015 Day2]世界冰球锦标赛</a></li>
+<li><a href="#a%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0">A.完全平方数</a></li>
+<li><a href="#bk%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97">B.K优先队列</a></li>
+<li><a href="#c%E5%AE%9D%E8%97%8F">C.宝藏</a></li>
 </ul>
 </li>
 </ul>
@@ -498,8 +499,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/">
-      折半搜索   学习笔记
+    <a class="post-title-link" href="https://alan-sp.github.io/post/mo-ni-sai-8-ti-jie/">
+      模拟赛 8 题解
     </a>
   </h1>
   <div class="post-meta">
@@ -507,7 +508,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-07-21</span>
+      <span>2020-10-26</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -516,8 +517,20 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/EpHV6TWcL/">
-              <span>搜索</span>
+            <a href="https://alan-sp.github.io/tag/D4Tg3YyZ7/">
+              <span>哈希</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/JByoAawEi7/">
+              <span>矩乘</span>
+            </a>、
+          
+        
+          
+            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
+              <span>动态规划</span>
             </a>
           
         
@@ -526,19 +539,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>448<span class="pc-show">字数</span></span>
+      <span>401<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/zhe-ban-sou-suo-xue-xi-bi-ji/" data-flag-title="折半搜索   学习笔记" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/mo-ni-sai-8-ti-jie/" data-flag-title="模拟赛 8 题解" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -547,68 +560,25 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <h2 id="1概述">1.概述</h2>
-<p>折半搜索，又称meet in the middle，通常是把不能直接做的题目分成两半。</p>
-<p>把这两半分别搜索。</p>
+                <p>哈希+对顶堆+倍增+矩阵乘法+dp+MTT</p>
 <!-- more -->
-<p>比如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的做法，有时可以分解为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>2</mn><mo>∗</mo><msup><mn>2</mn><mfrac><mi>n</mi><mn>2</mn></mfrac></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(2*2^{\frac n 2})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.09708em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.84708em;"><span style="top:-3.363em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，但是要考虑合并的复杂度。</p>
-<p>合并时可以通过排序，使一部分有序，再通过二分或其他做法合并答案。</p>
-<p>其实折半状压也是运用类似的思想。</p>
-<p>可以解决一些统计方案，但爆搜会T的题目</p>
-<hr>
-<h2 id="2例题">2.例题</h2>
-<h3 id="p4799-ceoi2015-day2世界冰球锦标赛">P4799 [CEOI2015 Day2]世界冰球锦标赛</h3>
-<blockquote>
-<p>Bobek有M元钱，共有N场比赛，每场比赛的门票都有一个价格 <img src="https://www.zhihu.com/equation?tex=C_i" alt="[公式]" loading="lazy"> 。<br>
-问在总票价不超过M元钱的情况下，Bobek共有多少种不同的观赛方案。<br>
-注1：若方案1中观看了某场比赛，方案2中未观看该场，则认为两种方案不同。<br>
-注2： <img src="https://www.zhihu.com/equation?tex=1%5Cle+N%5Cle40%2C1%5Cle+M+%5Cle+10%5E%7B18%7D%2CC_i%5Cle10%5E%7B16%7D" alt="[公式]" loading="lazy"> 。</p>
-</blockquote>
-<p>折半搜索模板。</p>
-<p>只需要拆成两部分，二分查找合适的就行。</p>
-<p>注意相等的可以取，所以要用upper_bound查找，数量减一。</p>
-<p>但因为vector的下标从0开始，所以就不用了。</p>
-<hr>
-<p><strong>Code：</strong></p>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
-using namespace std;
-#define int long long
-vector&lt;int&gt; a, b;
-int n, m, A[59], ans;
-inline void dfs(int l, int r, int sum, bool sign)
-{
-	if (sum &gt; m)
-		return;
-	if (l &gt; r)
-	{
-		if (!sign)
-			a.push_back(sum);
-		else
-			b.push_back(sum);
-		return;
-	}
-	dfs(l + 1, r, sum + A[l], sign);
-	dfs(l + 1, r, sum, sign);
-}
-
-signed main()
-{
-	scanf(&quot;%lld%lld&quot;, &amp;n, &amp;m);
-	for (int i = 1; i &lt;= n; i++)
-		scanf(&quot;%lld&quot;, &amp;A[i]);
-	dfs(1, n / 2, 0, 0);
-	dfs(n / 2 + 1, n, 0, 1);
-	sort(a.begin(), a.end());
-	for (int i = 0; i &lt; b.size(); i++)
-		ans += upper_bound(a.begin(), a.end(), m - b[i]) - a.begin();
-	printf(&quot;%lld&quot;, ans);
-	return 0;
-}
-</code></pre>
-<hr>
+<h3 id="a完全平方数">A.完全平方数</h3>
+<p>判断几个数的乘积是完全平方数：每个素因子的出现次数是偶数。</p>
+<p>考虑一个新加的数，如果我们把它素因子的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">val</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 都异或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
+<p>那么判断一种方案是否合法，只需要看是不是所有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">val</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 都为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，即前缀异或为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</p>
+<p>考虑到异或出来只有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，我们考虑状压解决这个问题。</p>
+<p>但是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>π</mi><mo>(</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup><mo>)</mo><mo>=</mo><mn>9981</mn></mrow><annotation encoding="application/x-tex">\pi(10^5)=9981</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span><span class="mord">9</span><span class="mord">8</span><span class="mord">1</span></span></span></span>，位数太多不好处理。</p>
+<p>那么我们可以选择一个大质数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>，每次把压好的状态 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace></mspace><mspace width="0.6666666666666666em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mi>P</mi></mrow><annotation encoding="application/x-tex">\mod P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.6666666666666666em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>，这样就达到了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>a</mi><mi>s</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">Hash</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span></span></span></span> 的效果。</p>
+<p>我们在得到一个新的状态时，要先加上它之前的出现次数，再更新它的次数，这个可以用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">map</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span></span></span></span> 维护。</p>
+<p>每次把新加的质数对应的状态都异或一遍就好了。</p>
+<h3 id="bk优先队列">B.K优先队列</h3>
+<p>正解是对顶堆，这里我采用平衡树实现。</p>
+<h3 id="c宝藏">C.宝藏</h3>
+<p>观察题面给出的串，可以发现它是通过倍增来构造的。</p>
+<p>考虑到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>⩽</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">n\leqslant 500</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733399999999999em;vertical-align:-0.13667em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span></span></span></span>，我们想到可以用矩阵乘法来表示每次的行走过程。</p>
+<p>可以构造两个矩阵，一个只包含 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 边，一个包含 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 边，那么我们可以通过这两个矩阵互相乘来构造走 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span> 步的转移矩阵。</p>
+<p>统计答案是能走就走，记录上一次走得是哪边的矩阵，最后记录步数即可。</p>
+<p><strong>记得用bitset优化。</strong></p>
 
               </div>
               <div class="post-footer">
@@ -619,7 +589,7 @@ signed main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/zhe-ban-sou-suo-xue-xi-bi-ji/" title="折半搜索   学习笔记">折半搜索   学习笔记</a>
+      <a href="https://alan-sp.github.io/post/mo-ni-sai-8-ti-jie/" title="模拟赛 8 题解">模拟赛 8 题解</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -628,21 +598,25 @@ signed main()
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/EpHV6TWcL/"># 搜索</a>
+      <a href="https://alan-sp.github.io/tag/D4Tg3YyZ7/"># 哈希</a>
+    
+      <a href="https://alan-sp.github.io/tag/JByoAawEi7/"># 矩乘</a>
+    
+      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="组合数学 学习笔记" href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">组合数学 学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="组合数学 学习笔记" href="https://alan-sp.github.io/post/zu-he-shu-xue-xue-xi-bi-ji/">上一篇</a>
+        <a class="nav-pc-next" title="模拟赛 7 题解" href="https://alan-sp.github.io/post/mo-ni-sai-7-ti-jie/">模拟赛 7 题解</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="模拟赛 7 题解" href="https://alan-sp.github.io/post/mo-ni-sai-7-ti-jie/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title=" 题解 [ZJOI2010] 基站选址" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/"> 题解 [ZJOI2010] 基站选址</a>
-        <a class="nav-mobile-next" title=" 题解 [ZJOI2010] 基站选址" href="https://alan-sp.github.io/post/ti-jie-zjoi2010-ji-zhan-xuan-zhi/">下一篇</a>
+        <a class="nav-pc-next" title="模拟赛 4 题解" href="https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/">模拟赛 4 题解</a>
+        <a class="nav-mobile-next" title="模拟赛 4 题解" href="https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

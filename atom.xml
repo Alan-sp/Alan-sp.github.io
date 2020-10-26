@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-10-23T12:34:30.613Z</updated>
+    <updated>2020-10-26T13:42:15.540Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[ 模拟赛 10 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-10-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-10-ti-jie/">
+        </link>
+        <updated>2020-10-26T13:40:48.000Z</updated>
+        <summary type="html"><![CDATA[<p>思维+状压+数据结构+dp</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>思维+状压+数据结构+dp</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 7 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-7-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-7-ti-jie/">
+        </link>
+        <updated>2020-10-26T13:39:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>数学+边双+树上倍增+二分+dp+贪心</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>数学+边双+树上倍增+二分+dp+贪心</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 8 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-8-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-8-ti-jie/">
+        </link>
+        <updated>2020-10-26T13:38:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>哈希+对顶堆+倍增+矩阵乘法+dp+MTT</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>哈希+对顶堆+倍增+矩阵乘法+dp+MTT</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[模拟赛 4 题解]]></title>
         <id>https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/</id>
@@ -87,55 +120,6 @@
 <h3 id="description">Description</h3>
 <blockquote>
 <p>给定一个长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的序列 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mi>a</mi><mo>}</mo></mrow><annotation encoding="application/x-tex">\{a\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">a</span><span class="mclose">}</span></span></span></span> ，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 次询问，每次询问区间 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[a,b]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mclose">]</span></span></span></span> 的逆序对数。</p>
-</blockquote>
-<hr>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Choice 题解]]></title>
-        <id>https://alan-sp.github.io/post/choice-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/choice-ti-jie/">
-        </link>
-        <updated>2020-09-29T02:55:24.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 CF662C 【Binary Table】]]></title>
-        <id>https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/</id>
-        <link href="https://alan-sp.github.io/post/ti-jie-cf662c-binary-table/">
-        </link>
-        <updated>2020-09-24T13:06:39.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>有一个 n行 m 列的表格，每个元素都是 0/1 ，每次操作可以选择一行或一列，把 0/1翻转，即把 0换为 1，把 1换为 0。请问经过若干次操作后，表格中最少有多少个 1。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>≤</mo><mn>20</mn><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">n\le20,m\le 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
-</blockquote>
-<hr>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>有一个 n行 m 列的表格，每个元素都是 0/1 ，每次操作可以选择一行或一列，把 0/1翻转，即把 0换为 1，把 1换为 0。请问经过若干次操作后，表格中最少有多少个 1。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>≤</mo><mn>20</mn><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">n\le20,m\le 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></p>
-</blockquote>
-<hr>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[KMP的删除操作]]></title>
-        <id>https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/</id>
-        <link href="https://alan-sp.github.io/post/kmp-de-shan-chu-cao-zuo/">
-        </link>
-        <updated>2020-09-24T12:56:55.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="description"><strong>Description：</strong></h3>
-<blockquote>
-<p>在字符串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>中，重复删除同一个字串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>。直到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>不在是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>的字串为止</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>S</mi><mi mathvariant="normal">∣</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">|S|\le10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></p>
-</blockquote>
-<hr>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="description"><strong>Description：</strong></h3>
-<blockquote>
-<p>在字符串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>中，重复删除同一个字串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>。直到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>不在是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>的字串为止</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>S</mi><mi mathvariant="normal">∣</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">|S|\le10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></p>
 </blockquote>
 <hr>
 ]]></content>

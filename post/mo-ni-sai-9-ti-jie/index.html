@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>题解 PTA-Little Bird | AlanSP&#39;s  Blog</title>
+<title>模拟赛 9 题解 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603887167383">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="题解 PTA-Little Bird" />
-    <meta name="keywords" content="动态规划,题解" />
+    <meta name="description" content="模拟赛 9 题解" />
+    <meta name="keywords" content="随笔" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -148,7 +148,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://alan-sp.github.io/images/avatar.png"/>
@@ -221,6 +222,197 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number manual" id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#a%E8%AF%A2%E9%97%AE">A.询问</a></li>
+<li><a href="#b%E5%BC%82%E6%88%96">B.异或</a></li>
+<li><a href="#c%E7%9F%A9%E5%BD%A2">C.矩形</a></li>
+<li><a href="#d%E8%99%9A%E4%BC%AA%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">D.虚伪的最小公倍数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1; 
+let active = 'active-show', activeClass = 'active-current';
+let tocWrapper = document.querySelector('#toc_wrapper');
+let tocContent = tocWrapper.children[0];
+let autoNumber = tocWrapper&&tocWrapper.classList.contains('auto-number');
+
+function addTocNumber(elem, deep) {
+  if (!elem) {
+    return;
+  }
+  let prop = elem.__proto__;
+
+  if (prop === HTMLUListElement.prototype) {
+    for (let i = 0; i < elem.children.length; i++) {
+      addTocNumber(elem.children[i], deep + (i + 1) + '.');
+    }
+  } else if (prop === HTMLLIElement.prototype) {
+    // 保存li元素
+    if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+      lList.push(elem);
+    }
+    for (let i = 0; i < elem.children.length; i++) {
+      let cur = elem.children[i];
+      if (cur.__proto__ === HTMLAnchorElement.prototype) {
+        if (autoNumber) {
+          cur.text =  deep + ' ' + cur.text;
+        }
+      } else if (cur.__proto__ === HTMLUListElement.prototype) {
+        addTocNumber(cur, deep);
+      }
+    }
+  }
+}
+
+function removeParentActiveClass() {
+  let parents = tocContent.querySelectorAll('.'+active)
+  parents.forEach(function(elem) {
+    elem.classList.remove(active);
+  });
+}
+
+function addActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.add(activeClass);
+  }
+}
+
+function removeActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.remove(activeClass);
+  }
+}
+
+function addActiveLiElemment(elem, parent) {
+  if (!elem || elem === parent) {
+    return;
+  } else {
+    if (elem.__proto__ === HTMLLIElement.prototype) {
+      elem.classList.add(active);
+    }
+    addActiveLiElemment(elem.parentElement, parent);
+  }
+}
+
+function showToc() {
+  if (tocWrapper) {
+    postBody = document.querySelector('#post_body');
+    for (let i = 0; i < postBody.children.length; i++) {
+      if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+        hList.push(postBody.children[i]);
+      }
+    }
+    if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+    } else if (tocWrapper.classList.contains('no_compress')){
+      tocContent.classList.add('expanded');
+    } else {
+      if (hList.length > 10) {
+        active = 'active-hidden'
+        tocContent.classList.add('closed');
+      } else {
+        tocContent.classList.add('expanded');
+      }
+    }
+  }
+}
+
+(function() {
+  // 处理不是从#一级标题开始目录
+  if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+    let con = tocContent.children[0].children[0];
+    tocContent.innerHTML = con.innerHTML;
+  }
+  addTocNumber(tocContent, '');
+})();
+
+document.addEventListener('scroll', function(e) {
+  if (lList.length <= 0) {
+    return;
+  }
+  let scrollTop = document.scrollingElement.scrollTop + 10;
+  let dir;
+
+  if (lastTop - scrollTop > 0) {
+    dir = 'up';
+  } else {
+    dir = 'down';
+  }
+
+  lastTop = scrollTop;
+  if (scrollTop <= 0) {
+    if (lastIndex >= 0 && lastIndex < hList.length) {
+      lList[lastIndex].classList.remove(activeClass);
+    }
+    return;
+  }
+
+  let current = 0, hasFind = false;
+  for (let i = 0; i < hList.length; i++) {
+    if (hList[i].offsetTop > scrollTop) {
+      current = i;
+      hasFind = true;
+      break;
+    }
+  }
+  if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+    current = hList.length - 1;
+  } else {
+    current--;
+  }
+  if (dir === 'down') {
+    if (current > lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex) 
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  } else {
+    if (current < lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex);
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  }
+});
+
+window.addEventListener('load', function() {
+  showToc();
+  document.querySelector('#sidebar').style='display: block;';
+  tocWrapper.classList.add('toc-active');
+  setTimeout(function() {
+    if ("createEvent" in document) {
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("scroll", false, true);
+      document.dispatchEvent(evt);
+    }
+    else {
+      document.fireEvent("scroll");
+    }
+  }, 500)
+})
+
+</script>
+            </div>
           
         
       </div>
@@ -308,8 +500,8 @@
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/ti-jie-pta-little-bird/">
-      题解 PTA-Little Bird
+    <a class="post-title-link" href="https://alan-sp.github.io/post/mo-ni-sai-9-ti-jie/">
+      模拟赛 9 题解
     </a>
   </h1>
   <div class="post-meta">
@@ -317,7 +509,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-05-03</span>
+      <span>2020-10-28</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -326,14 +518,8 @@
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
-              <span>动态规划</span>
-            </a>、
-          
-        
-          
-            <a href="https://alan-sp.github.io/tag/BqmQeZXwL/">
-              <span>题解</span>
+            <a href="https://alan-sp.github.io/tag/ppyiCWnIR/">
+              <span>随笔</span>
             </a>
           
         
@@ -342,19 +528,19 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>1分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>336<span class="pc-show">字数</span></span>
+      <span>170<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/ti-jie-pta-little-bird/" data-flag-title="题解 PTA-Little Bird" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/mo-ni-sai-9-ti-jie/" data-flag-title="模拟赛 9 题解" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -363,48 +549,18 @@
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p><strong>Description</strong></p>
-<p>有一个鸟，从1开始，跳到比当前矮的树不消耗体力，否则消耗一点体力，每次询问有一个步伐限制，求每次最少耗费多少体力</p>
-<hr>
-<p>其实是可以用下标做单调队列的~</p>
-<p>注意到：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><munder><mi>min</mi><mo>⁡</mo><mrow><mi>i</mi><mo>−</mo><mi>k</mi><mo>&lt;</mo><mo>=</mo><mi>j</mi><mo>&lt;</mo><mi>i</mi></mrow></munder><mo>{</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mo>[</mo><msub><mi>h</mi><mi>j</mi></msub><mo>&lt;</mo><mo>=</mo><msub><mi>h</mi><mi>i</mi></msub><mo>]</mo><mo>}</mo></mrow><annotation encoding="application/x-tex">dp[i]=\min_{i-k&lt;= j&lt;i}\{dp[j]+[h_j&lt;=h_i]\}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.638216em;vertical-align:-0.8882159999999999em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.66786em;"><span style="top:-2.0478920000000005em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">&lt;</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">&lt;</span><span class="mord mathdefault mtight">i</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8882159999999999em;"><span></span></span></span></span></span><span class="mopen">{</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mclose">}</span></span></span></span></span></p>
-<p>这两个都和j有关，就可以打包成pair扔进单调队列。</p>
-<p>或者直接存下标。</p>
-<p>这个单调队列的单调性不仅由dp[i]决定，还有h决定。</p>
-<p>显然，当dp值相同的时候，我们站的高度应该越高越好</p>
-<p>所以入队时多判断一下就行。</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-const int N=1000009;
-
-int n,q,k,ans;
-int h[N],dp[N];
-deque&lt;int&gt; Q;
-
-int main()
-{
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;h[i]);
-	scanf(&quot;%d&quot;,&amp;q);
-	while(q--)
-	{
-		Q.clear();
-		scanf(&quot;%d&quot;,&amp;k);
-        //Q.push_back(1);
-		for(int i=1;i&lt;=n;i++)
-		{
-			while(!Q.empty()&amp;&amp;i-Q.front()&gt;k) Q.pop_front();
-			if(!Q.empty()) dp[i]=dp[Q.front()]+(h[Q.front()]&lt;=h[i]);
-			while(!Q.empty()&amp;&amp;(dp[i]&lt;dp[Q.back()]||(dp[i]==dp[Q.back()]&amp;&amp;h[i]&gt;=h[Q.back()]))) Q.pop_back();
-			Q.push_back(i);
-		}
-		printf(&quot;%d\n&quot;,dp[n]);
-	}
-	return 0;
-}
-</code></pre>
+                <h3 id="a询问">A.询问</h3>
+<p>注意到查询时要保证相对顺序和字符数量，考虑哈希。</p>
+<p>我们可以依次对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>26</mn></mrow><annotation encoding="application/x-tex">26</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">6</span></span></span></span> 个字母哈希，查询时提取区间依次枚举，看有没有两种字符的哈希值完全对应。</p>
+<h3 id="b异或">B.异或</h3>
+<p>01trie模板题，插入的时候维护siz即可。</p>
+<h3 id="c矩形">C.矩形</h3>
+<p>转化成点在右下角的矩形，之后扫描线。</p>
+<h3 id="d虚伪的最小公倍数">D.虚伪的最小公倍数</h3>
+<p>分子分母分开推式子。</p>
+<p>分母处理时两次整除分块。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><munderover><mo>∏</mo><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mi>d</mi><mrow><munderover><mo>∑</mo><mrow><mi>g</mi><mo>=</mo><mn>1</mn></mrow><mrow><mo>⌊</mo><mfrac><mi>n</mi><mi>d</mi></mfrac><mo>⌋</mo></mrow></munderover><mi>μ</mi><mo>(</mo><mi>g</mi><mo>)</mo><mo>⌊</mo><mfrac><mi>n</mi><mrow><mi>d</mi><mi>g</mi></mrow></mfrac><msup><mo>⌋</mo><mi>k</mi></msup></mrow></msup></mrow><annotation encoding="application/x-tex">\prod_{d=1}^nd^{\sum_{g=1}^{\lfloor\frac n d\rfloor}\mu(g)\lfloor\frac n {dg}\rfloor^k}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9535100000000005em;vertical-align:-1.302113em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∏</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.302113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.36191em;"><span style="top:-3.44577em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3087714285714287em;"><span style="top:-2.688485714285714em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.7248em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mopen mtight">⌊</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size1 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8175600000000001em;"><span style="top:-2.468em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault mtight">d</span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.387em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault mtight">n</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.532em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size1 size6"></span></span><span class="mclose mtight">⌋</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4504em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mathdefault mtight">μ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="mclose mtight">)</span><span class="mopen mtight">⌊</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.48288571428571425em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose mtight"><span class="mclose mtight">⌋</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9270285714285713em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
 
               </div>
               <div class="post-footer">
@@ -415,7 +571,7 @@ int main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/ti-jie-pta-little-bird/" title="题解 PTA-Little Bird">题解 PTA-Little Bird</a>
+      <a href="https://alan-sp.github.io/post/mo-ni-sai-9-ti-jie/" title="模拟赛 9 题解">模拟赛 9 题解</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -424,23 +580,21 @@ int main()
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
-    
-      <a href="https://alan-sp.github.io/tag/BqmQeZXwL/"># 题解</a>
+      <a href="https://alan-sp.github.io/tag/ppyiCWnIR/"># 随笔</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">数位DP 学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="数位DP 学习笔记" href="https://alan-sp.github.io/post/shu-wei-dp-xue-xi-bi-ji/">上一篇</a>
+        <a class="nav-pc-next" title="模拟赛 12 题解" href="https://alan-sp.github.io/post/mo-ni-sai-12-ti-jie/">模拟赛 12 题解</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="模拟赛 12 题解" href="https://alan-sp.github.io/post/mo-ni-sai-12-ti-jie/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">最长公共上升子序列（LCIS）</a>
-        <a class="nav-mobile-next" title="最长公共上升子序列（LCIS）" href="https://alan-sp.github.io/post/zui-chang-gong-gong-shang-sheng-zi-xu-lie-lcis/">下一篇</a>
+        <a class="nav-pc-next" title="Codeforces #679 div2 简要题解" href="https://alan-sp.github.io/post/codeforces-679-div2-jian-yao-ti-jie/">Codeforces #679 div2 简要题解</a>
+        <a class="nav-mobile-next" title="Codeforces #679 div2 简要题解" href="https://alan-sp.github.io/post/codeforces-679-div2-jian-yao-ti-jie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-11-03T12:53:41.284Z</updated>
+    <updated>2020-11-04T11:31:16.730Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 16 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/">
+        </link>
+        <updated>2020-11-04T11:30:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>二分+dp+单调栈+树链剖分+贪心+并查集</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>二分+dp+单调栈+树链剖分+贪心+并查集</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 13 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-13-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-13-ti-jie/">
+        </link>
+        <updated>2020-11-04T09:56:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>数论+最小生成树+字符串+模拟+最短路</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>数论+最小生成树+字符串+模拟+最短路</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 15 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-15-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-15-ti-jie/">
+        </link>
+        <updated>2020-11-04T09:55:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>前缀和+stl + dp + 优化 +树链剖分</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>前缀和+stl + dp + 优化 +树链剖分</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[奥法之劫 题解]]></title>
         <id>https://alan-sp.github.io/post/ao-fa-zhi-jie-ti-jie/</id>
@@ -73,39 +106,6 @@
         <summary type="html"><![CDATA[<p>思维+状压+数据结构+dp</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>思维+状压+数据结构+dp</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 7 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-7-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-7-ti-jie/">
-        </link>
-        <updated>2020-10-26T13:39:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>数学+边双+树上倍增+二分+dp+贪心</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>数学+边双+树上倍增+二分+dp+贪心</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 8 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-8-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-8-ti-jie/">
-        </link>
-        <updated>2020-10-26T13:38:03.000Z</updated>
-        <summary type="html"><![CDATA[<p>哈希+对顶堆+倍增+矩阵乘法+dp+MTT</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>哈希+对顶堆+倍增+矩阵乘法+dp+MTT</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 4 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-4-ti-jie/">
-        </link>
-        <updated>2020-10-23T12:33:05.000Z</updated>
-        <summary type="html"><![CDATA[<p>思维+状压dp+博弈论+数学+模拟</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>思维+状压dp+博弈论+数学+模拟</p>
 ]]></content>
     </entry>
 </feed>

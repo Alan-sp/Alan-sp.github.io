@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-11-04T11:34:15.715Z</updated>
+    <updated>2020-11-14T11:02:11.137Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,84 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[有趣计数题选做]]></title>
+        <id>https://alan-sp.github.io/post/you-qu-ji-shu-ti-xuan-zuo/</id>
+        <link href="https://alan-sp.github.io/post/you-qu-ji-shu-ti-xuan-zuo/">
+        </link>
+        <updated>2020-11-14T11:01:00.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 21 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-21-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-21-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:58:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>数论+计数+dp+贪心+堆</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>数论+计数+dp+贪心+堆</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[函数调用 题解]]></title>
+        <id>https://alan-sp.github.io/post/han-shu-diao-yong-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/han-shu-diao-yong-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:57:49.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="description">Description</h3>
+<p>给定一个序列和若干种操作，他们分成三类：</p>
+<ul>
+<li>将序列中的指定元素加上一个值；</li>
+<li>将序列中的每一个元素乘以一个相同值；</li>
+<li>依次执行若干次操作，不会出现递归。<br>
+给出一个长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 的操作串，询问依次执行完上面的所有操作后，序列中每个元素的值是多少。</li>
+</ul>
+<hr>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="description">Description</h3>
+<p>给定一个序列和若干种操作，他们分成三类：</p>
+<ul>
+<li>将序列中的指定元素加上一个值；</li>
+<li>将序列中的每一个元素乘以一个相同值；</li>
+<li>依次执行若干次操作，不会出现递归。<br>
+给出一个长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 的操作串，询问依次执行完上面的所有操作后，序列中每个元素的值是多少。</li>
+</ul>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 20 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-20-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-20-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:54:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>数论+dp+模拟+主席树+哈希</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>数论+dp+模拟+主席树+哈希</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 19 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-19-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-19-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:53:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>主席树+差分+二维BIT</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>主席树+差分+二维BIT</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 18 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-18-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-18-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:51:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>贪心+背包+最短路+换根dp+二分</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>贪心+背包+最短路+换根dp+二分</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[模拟赛 16 题解]]></title>
         <id>https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/</id>
@@ -52,60 +130,6 @@
         <summary type="html"><![CDATA[<p>这里是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的做法。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>这里是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的做法。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[斯特林数 学习笔记]]></title>
-        <id>https://alan-sp.github.io/post/si-te-lin-shu-xue-xi-bi-ji/</id>
-        <link href="https://alan-sp.github.io/post/si-te-lin-shu-xue-xi-bi-ji/">
-        </link>
-        <updated>2020-11-02T02:37:32.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 14 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-14-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-14-ti-jie/">
-        </link>
-        <updated>2020-11-01T11:00:26.000Z</updated>
-        <summary type="html"><![CDATA[<p>贪心+结论+数论</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>贪心+结论+数论</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 12 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-12-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-12-ti-jie/">
-        </link>
-        <updated>2020-10-28T12:11:59.000Z</updated>
-        <summary type="html"><![CDATA[<p>思维+贪心+双指针+换根dp+树上差分+树状数组</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>思维+贪心+双指针+换根dp+树上差分+树状数组</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 9 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-9-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-9-ti-jie/">
-        </link>
-        <updated>2020-10-28T03:57:14.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Codeforces #679 div2 简要题解]]></title>
-        <id>https://alan-sp.github.io/post/codeforces-679-div2-jian-yao-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/codeforces-679-div2-jian-yao-ti-jie/">
-        </link>
-        <updated>2020-10-27T11:20:42.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 模拟赛 11 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-11-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-11-ti-jie/">
-        </link>
-        <updated>2020-10-27T10:03:17.000Z</updated>
-        <summary type="html"><![CDATA[<p>数论+置换+数据结构+思维+dp+斜率优化</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>数论+置换+数据结构+思维+dp+斜率优化</p>
 ]]></content>
     </entry>
 </feed>

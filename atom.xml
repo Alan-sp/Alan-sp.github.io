@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-11-14T11:02:11.137Z</updated>
+    <updated>2020-11-21T11:48:55.963Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[请客 题解]]></title>
+        <id>https://alan-sp.github.io/post/qing-ke-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/qing-ke-ti-jie/">
+        </link>
+        <updated>2020-11-20T12:12:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>环状计数问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>环状计数问题。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[有趣计数题选做]]></title>
         <id>https://alan-sp.github.io/post/you-qu-ji-shu-ti-xuan-zuo/</id>
@@ -119,17 +130,6 @@
         <summary type="html"><![CDATA[<p>前缀和+stl + dp + 优化 +树链剖分</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>前缀和+stl + dp + 优化 +树链剖分</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[奥法之劫 题解]]></title>
-        <id>https://alan-sp.github.io/post/ao-fa-zhi-jie-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/ao-fa-zhi-jie-ti-jie/">
-        </link>
-        <updated>2020-11-03T03:59:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>这里是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的做法。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这里是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的做法。</p>
 ]]></content>
     </entry>
 </feed>

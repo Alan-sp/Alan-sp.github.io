@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="千夫诺诺，不如一士谔谔">
 <meta name="theme-color" content="#000">
-<title>模拟赛 13 题解 | AlanSP&#39;s  Blog</title>
+<title>模拟赛 28 题解 | AlanSP&#39;s  Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1606462241149">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="模拟赛 13 题解" />
-    <meta name="keywords" content="最短路,最小生成树,数论,思维" />
+    <meta name="description" content="模拟赛 28 题解" />
+    <meta name="keywords" content="最小生成树,思维,动态规划" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -239,10 +239,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#agcd">A.GCD</a></li>
-<li><a href="#b%E5%B0%8Fa%E7%9A%84%E5%90%8C%E5%AD%A6%E5%9B%BE">B.小Ａ的同学图</a></li>
-<li><a href="#c%E5%89%8D%E7%BC%80">C.前缀</a></li>
-<li><a href="#d%E7%A7%BB%E5%8A%A8">D.移动</a></li>
+<li><a href="#cpair">C.pair</a></li>
+<li><a href="#dmex">D.mex</a></li>
 </ul>
 </li>
 </ul>
@@ -508,8 +506,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alan-sp.github.io/post/mo-ni-sai-13-ti-jie/">
-      模拟赛 13 题解
+    <a class="post-title-link" href="https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/">
+      模拟赛 28 题解
     </a>
   </h1>
   <div class="post-meta">
@@ -517,7 +515,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-11-04</span>
+      <span>2020-11-27</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -526,26 +524,20 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alan-sp.github.io/tag/06tmmb4Hn/">
-              <span>最短路</span>
-            </a>、
-          
-        
-          
             <a href="https://alan-sp.github.io/tag/E54WDj0AHZ/">
               <span>最小生成树</span>
             </a>、
           
         
           
-            <a href="https://alan-sp.github.io/tag/G_FR7pGgm/">
-              <span>数论</span>
+            <a href="https://alan-sp.github.io/tag/jX0uF0qH7/">
+              <span>思维</span>
             </a>、
           
         
           
-            <a href="https://alan-sp.github.io/tag/jX0uF0qH7/">
-              <span>思维</span>
+            <a href="https://alan-sp.github.io/tag/RH7t5YnHV/">
+              <span>动态规划</span>
             </a>
           
         
@@ -559,14 +551,14 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>425<span class="pc-show">字数</span></span>
+      <span>316<span class="pc-show">字数</span></span>
     </span>
     
       
       
         
       
-      <span id="/post/mo-ni-sai-13-ti-jie/" data-flag-title="模拟赛 13 题解" class="meta-item pc-show leancloud_visitors">
+      <span id="/post/mo-ni-sai-28-ti-jie/" data-flag-title="模拟赛 28 题解" class="meta-item pc-show leancloud_visitors">
         <span class="post-meta-divider">|</span>
         <i class="fa fa-eye"></i>
         <span>浏览量：<span class="leancloud-visitors-count" ></span></span>
@@ -575,29 +567,22 @@ window.addEventListener('load', function() {
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>数论+最小生成树+字符串+模拟+最短路</p>
+                <p>最小生成树+dp+思维</p>
 <!-- more -->
-<h3 id="agcd">A.GCD</h3>
-<p>不难发现 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo><mi mathvariant="normal">≠</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">f(i)\neq1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 当且仅当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi mathvariant="normal">≠</mi><msup><mi>p</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">i\neq p^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.043548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span>，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> 为质数。</p>
-<p>所以可以在线性筛过程中求出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>，即所有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>p</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">p^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.043548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span> 的数。</p>
-<h3 id="b小a的同学图">B.小Ａ的同学图</h3>
-<p>发现题目和边权大小有关，不难联想到最小生成树。</p>
-<p>把边权从小到大排序，依次加入每条边，类似 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi><mi>r</mi><mi>u</mi><mi>s</mi><mi>k</mi><mi>r</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Kruskral</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>。</p>
-<p>加边的时候维护一下当前得到的不同颜色数，这个可以用bitset实现。</p>
-<p>同时还要维护加到这条边后的答案前缀和，除了算上加完这条边的不同颜色个数，还要算上当前边与上条边边权之差再乘上上一次的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span>。</p>
-<p>这是因为承受度在这两者之间的答案只能沿袭上一次的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span>。</p>
-<p>这样做完，查询时直接前缀和+二分找到对应的左右端点，注意边界的情况。</p>
-<hr>
-<p>考试的时候写了一个奇怪的做法：找到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 到其他点路径上最大值求最小，把他们作为分界点。</p>
-<p>查询时把区间分成若干个颜色之间的段去跑。</p>
-<p>后来想了想觉得是本质一样的。</p>
-<h3 id="c前缀">C.前缀</h3>
-<p>先咕着，以后再改。</p>
-<h3 id="d移动">D.移动</h3>
-<p>也是最短路模型。</p>
-<p>发现各个节点间未关闭的区间可以连边，跑最短路时用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>w</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">_</mi><mi>b</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">lower\_bound</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span></span></span></span> 找到前后可以连的区间连边就行了。</p>
-<p>这个的实现方式有多种，可以用堆维护当前时间最小的状态，也可以直接最短路。</p>
-<p>细节比较多，有时间再写一遍。</p>
+<p>A 和 B 太水被吃了。</p>
+<h3 id="cpair">C.pair</h3>
+<p>把给定的条件看成边，那么答案就是最大生成基环树森林。</p>
+<p>可以简单证明：一条边必须有一个点和它进行配对，所以点数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⩾</mo></mrow><annotation encoding="application/x-tex">\geqslant</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733399999999999em;vertical-align:-0.13667em;"></span><span class="mrel amsrm">⩾</span></span></span></span> 边数。</p>
+<p>那么用并查集维护就好了，再维护一下当前连通块是否包含环。</p>
+<h3 id="dmex">D.mex</h3>
+<p>好题。</p>
+<p>首先考虑什么样的链会产生贡献，显然，它必须是连续的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[0,k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span>。</p>
+<p>它会对什么产生贡献：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(u,v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span> 分别位于链两端的子树中。</p>
+<p>并且我们发现贡献是递增的，也就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[0,k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 的mex是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">[0,k-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 的mex加一。</p>
+<p>所以我们考虑dp，设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>l</mi><mo>]</mo><mo>[</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[l][r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 表示当前链的端点是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo separator="true">,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l,r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span> 的贡献和。</p>
+<p>转移利用刚才递增的特征，比 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>l</mi><mo>]</mo><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>r</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[l][son[r]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>l</mi><mo>]</mo><mo>]</mo><mo>[</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[son[l]][r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mclose">]</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 多了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 的贡献，而次数是左右两个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">siz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span> 相乘。</p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>u</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">son[u]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span></span></span></span> 表示 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的出边中靠近链的那一个。</p>
+<p>转移顺序不确定，采用记忆化搜索。</p>
 
               </div>
               <div class="post-footer">
@@ -608,7 +593,7 @@ window.addEventListener('load', function() {
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alan-sp.github.io/post/mo-ni-sai-13-ti-jie/" title="模拟赛 13 题解">模拟赛 13 题解</a>
+      <a href="https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/" title="模拟赛 28 题解">模拟赛 28 题解</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -617,27 +602,21 @@ window.addEventListener('load', function() {
   </ul>
   <div class="tags">
     
-      <a href="https://alan-sp.github.io/tag/06tmmb4Hn/"># 最短路</a>
-    
       <a href="https://alan-sp.github.io/tag/E54WDj0AHZ/"># 最小生成树</a>
     
-      <a href="https://alan-sp.github.io/tag/G_FR7pGgm/"># 数论</a>
-    
       <a href="https://alan-sp.github.io/tag/jX0uF0qH7/"># 思维</a>
+    
+      <a href="https://alan-sp.github.io/tag/RH7t5YnHV/"># 动态规划</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="模拟赛 16 题解" href="https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/">模拟赛 16 题解</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="模拟赛 16 题解" href="https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="模拟赛 15 题解" href="https://alan-sp.github.io/post/mo-ni-sai-15-ti-jie/">模拟赛 15 题解</a>
-        <a class="nav-mobile-next" title="模拟赛 15 题解" href="https://alan-sp.github.io/post/mo-ni-sai-15-ti-jie/">下一篇</a>
+        <a class="nav-pc-next" title="模拟赛 24 题解" href="https://alan-sp.github.io/post/mo-ni-sai-24-ti-jie/">模拟赛 24 题解</a>
+        <a class="nav-mobile-next" title="模拟赛 24 题解" href="https://alan-sp.github.io/post/mo-ni-sai-24-ti-jie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

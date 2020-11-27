@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-11-23T05:56:08.313Z</updated>
+    <updated>2020-11-27T07:31:03.645Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 28 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/">
+        </link>
+        <updated>2020-11-27T07:29:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>最小生成树+dp+思维</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最小生成树+dp+思维</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[模拟赛 24 题解]]></title>
         <id>https://alan-sp.github.io/post/mo-ni-sai-24-ti-jie/</id>
@@ -121,17 +132,6 @@
         <summary type="html"><![CDATA[<p>二分+dp+单调栈+树链剖分+贪心+并查集</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>二分+dp+单调栈+树链剖分+贪心+并查集</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 13 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-13-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-13-ti-jie/">
-        </link>
-        <updated>2020-11-04T09:56:15.000Z</updated>
-        <summary type="html"><![CDATA[<p>数论+最小生成树+字符串+模拟+最短路</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>数论+最小生成树+字符串+模拟+最短路</p>
 ]]></content>
     </entry>
 </feed>

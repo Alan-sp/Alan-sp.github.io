@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alan-sp.github.io</id>
     <title>AlanSP&apos;s  Blog</title>
-    <updated>2020-11-27T07:31:03.645Z</updated>
+    <updated>2020-12-02T07:03:14.102Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alan-sp.github.io"/>
     <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://alan-sp.github.io/images/avatar.png</logo>
     <icon>https://alan-sp.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 32 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-32-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-32-ti-jie/">
+        </link>
+        <updated>2020-12-02T07:01:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>博弈论+剥叶子+思维+模拟+构造+背包+贪心+状压+动态规划</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>博弈论+剥叶子+思维+模拟+构造+背包+贪心+状压+动态规划</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 29 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-29-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-29-ti-jie/">
+        </link>
+        <updated>2020-12-02T07:00:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>思维+模拟+计数+子树贡献+决策单调性</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>思维+模拟+计数+子树贡献+决策单调性</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[模拟赛 28 题解]]></title>
         <id>https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/</id>
@@ -110,28 +132,6 @@
         <summary type="html"><![CDATA[<p>主席树+差分+二维BIT</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>主席树+差分+二维BIT</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 18 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-18-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-18-ti-jie/">
-        </link>
-        <updated>2020-11-14T10:51:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>贪心+背包+最短路+换根dp+二分</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>贪心+背包+最短路+换根dp+二分</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[模拟赛 16 题解]]></title>
-        <id>https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/</id>
-        <link href="https://alan-sp.github.io/post/mo-ni-sai-16-ti-jie/">
-        </link>
-        <updated>2020-11-04T11:30:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>二分+dp+单调栈+树链剖分+贪心+并查集</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>二分+dp+单调栈+树链剖分+贪心+并查集</p>
 ]]></content>
     </entry>
 </feed>

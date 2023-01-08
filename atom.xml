@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://alan-sp.github.io</id>
+    <title>AlanSP&apos;s  Blog</title>
+    <updated>2023-01-08T05:55:55.402Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://alan-sp.github.io"/>
+    <link rel="self" href="https://alan-sp.github.io/atom.xml"/>
+    <subtitle>千夫诺诺，不如一士谔谔</subtitle>
+    <logo>https://alan-sp.github.io/images/avatar.png</logo>
+    <icon>https://alan-sp.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, AlanSP&apos;s  Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[2023 winter training short round #3 总结]]></title>
+        <id>https://alan-sp.github.io/post/2023-winter-training-short-round-3-zong-jie/</id>
+        <link href="https://alan-sp.github.io/post/2023-winter-training-short-round-3-zong-jie/">
+        </link>
+        <updated>2023-01-11T01:19:39.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="2023-winter-training-short-round-3"><a href="https://codeforces.com/group/3A4gl1WMK7/contest/418887">2023 winter training short round #3</a></h2>
+<p>毒瘤构造专场</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="2023-winter-training-short-round-3"><a href="https://codeforces.com/group/3A4gl1WMK7/contest/418887">2023 winter training short round #3</a></h2>
+<p>毒瘤构造专场</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2023 winter training short round #2]]></title>
+        <id>https://alan-sp.github.io/post/2023-winter-training-short-round-2/</id>
+        <link href="https://alan-sp.github.io/post/2023-winter-training-short-round-2/">
+        </link>
+        <updated>2023-01-08T04:40:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>rk 13</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>rk 13</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 32 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-32-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-32-ti-jie/">
+        </link>
+        <updated>2020-12-02T07:01:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>博弈论+剥叶子+思维+模拟+构造+背包+贪心+状压+动态规划</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>博弈论+剥叶子+思维+模拟+构造+背包+贪心+状压+动态规划</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 29 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-29-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-29-ti-jie/">
+        </link>
+        <updated>2020-12-02T07:00:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>思维+模拟+计数+子树贡献+决策单调性</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>思维+模拟+计数+子树贡献+决策单调性</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 28 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-28-ti-jie/">
+        </link>
+        <updated>2020-11-27T07:29:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>最小生成树+dp+思维</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最小生成树+dp+思维</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 24 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-24-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-24-ti-jie/">
+        </link>
+        <updated>2020-11-22T23:31:53.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="模拟赛-24-题解">模拟赛 24 题解</h1>
+<p>思维+树状数组+最短路+背包+计数+状压</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="模拟赛-24-题解">模拟赛 24 题解</h1>
+<p>思维+树状数组+最短路+背包+计数+状压</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[请客 题解]]></title>
+        <id>https://alan-sp.github.io/post/qing-ke-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/qing-ke-ti-jie/">
+        </link>
+        <updated>2020-11-20T12:12:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>环状计数问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>环状计数问题。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[有趣计数题选做]]></title>
+        <id>https://alan-sp.github.io/post/you-qu-ji-shu-ti-xuan-zuo/</id>
+        <link href="https://alan-sp.github.io/post/you-qu-ji-shu-ti-xuan-zuo/">
+        </link>
+        <updated>2020-11-14T11:01:00.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟赛 21 题解]]></title>
+        <id>https://alan-sp.github.io/post/mo-ni-sai-21-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/mo-ni-sai-21-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:58:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>数论+计数+dp+贪心+堆</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>数论+计数+dp+贪心+堆</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[函数调用 题解]]></title>
+        <id>https://alan-sp.github.io/post/han-shu-diao-yong-ti-jie/</id>
+        <link href="https://alan-sp.github.io/post/han-shu-diao-yong-ti-jie/">
+        </link>
+        <updated>2020-11-14T10:57:49.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="description">Description</h3>
+<p>给定一个序列和若干种操作，他们分成三类：</p>
+<ul>
+<li>将序列中的指定元素加上一个值；</li>
+<li>将序列中的每一个元素乘以一个相同值；</li>
+<li>依次执行若干次操作，不会出现递归。<br>
+给出一个长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 的操作串，询问依次执行完上面的所有操作后，序列中每个元素的值是多少。</li>
+</ul>
+<hr>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="description">Description</h3>
+<p>给定一个序列和若干种操作，他们分成三类：</p>
+<ul>
+<li>将序列中的指定元素加上一个值；</li>
+<li>将序列中的每一个元素乘以一个相同值；</li>
+<li>依次执行若干次操作，不会出现递归。<br>
+给出一个长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span> 的操作串，询问依次执行完上面的所有操作后，序列中每个元素的值是多少。</li>
+</ul>
+<hr>
+]]></content>
+    </entry>
+</feed>
